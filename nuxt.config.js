@@ -38,23 +38,27 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://i18n.nuxtjs.org
-    'nuxt-i18n',
-    // https://www.storyblok.com/tp/nuxt-js-multilanguage-website-tutorial
-    ['storyblok-nuxt', {
-      accessToken: '8zzel9cVTzGIcmMNO4uaOQtt',
-      cacheProvider: 'memory',
-      // optional https://www.storyblok.com/docs/Guides/storyblok-latest-js#storyblokinitconfig
-      customParent: 'cairo-pioneers-reference'
+    ['nuxt-i18n', {
+      baseUrl : 'https://cpr.heroku.com',
+      seo : true,
+      strategy : 'prefix',
+      locales : [
+        { code: 'ar', iso: 'ar-EG', dir: 'rtl', name : 'عربي' }
+      ],
+      defaultLocale : 'ar',
+      vueI18nLoader: true
     }],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
-  // I18n-nuxt module configuration ()
-  i18n : {},
-
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  // https://nuxtjs.org/docs/2.x/directory-structure/middleware
+  router: {
+    middleware : 'i18n'
   }
 }
