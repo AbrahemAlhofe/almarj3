@@ -15,7 +15,8 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     'normalize.css/normalize.css',
-    '@/assets/fonts/Cairo/load.css'
+    '@/assets/fonts/Cairo/load.css',
+    '@/assets/main.css'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
