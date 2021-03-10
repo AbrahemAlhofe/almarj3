@@ -1,10 +1,10 @@
 <template lang='pug'>
   div
-    AppMenu
-    AppSidebar
-    AppSearchWindow
+    TheMenu
+    TheSidebar
+    TheSearchWindow
     Nuxt
-    AppFooter
+    TheFooter
 </template>
 <script>
 export default {}

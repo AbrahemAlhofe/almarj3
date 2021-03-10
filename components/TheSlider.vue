@@ -42,14 +42,12 @@
                     span {{ category }}
                     span.arrow( v-if='index % 2 === 0' ) &nbsp;>&nbsp;
 
-        .slider__controller: v-controller(  v-model='currentSlideIndex' :length='slidesLength' )
+        .slider__controller: TheSliderController(  v-model='currentSlideIndex' :length='slidesLength' )
 </template>
 <script>
-import VController from '@/components/AppSlider/controller.vue'
 import onSwipe from '@/compositions/on-swipe'
 
 export default {
-  components: { VController },
   data () {
     return {
       currentSlideIndex: 0,

@@ -1,6 +1,6 @@
 <template lang='pug'>
   .defaultLayer__indexPage
-    AppSlider
+    TheSlider
 </template>
 
 <script>

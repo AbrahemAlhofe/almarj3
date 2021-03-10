@@ -4,7 +4,7 @@
 </i18n>
 <template lang="pug">
     .footer
-        Logo.footer__logo
+        v-logo.footer__logo
         .footer__copyRight {{ $t('copy_right')}}
         .contactUs
             .contactUs__facebook: FacebookIcon

@@ -7,7 +7,7 @@
 </i18n>
 <template lang="pug">
     .menu
-        Logo.menu__logo( :is-full='true' )
+        v-logo.menu__logo( :is-full='true' )
         ul.menu__list
           li.tap
             .tap__icon: BookIcon
