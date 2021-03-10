@@ -1,9 +1,9 @@
 <i18n lang='yaml'>
     ar:
       taps:
-          /reference: المرجع
-          /faq: الأسئلة الشائعة
-          /who-we-are: من نحن
+          reference: المرجع
+          faq: الأسئلة الشائعة
+          who_we_are: من نحن
 </i18n>
 <template lang="pug">
     v-overlay( :is-overlay-open='$store.state.isSidebarOpen' )
@@ -22,13 +22,33 @@
                     .sidebar__header
                         .sidebar__closeButton( @click='closeSlot' ): ArrowIcon
                     .sidebar__list
-                        .sidebar__tap( v-for='( tap__text, tap__link ) of $t("taps")' ) {{ tap__text }}
+                        .sidebar__tap
+                            .sidebar__tapIcon: BookIcon
+                            .sidebar__tapText {{ $t('taps.reference') }}
+                        .sidebar__tap
+                            .sidebar__tapIcon: QuestionMarkIcon
+                            .sidebar__tapText {{ $t('taps.faq') }}
+                        .sidebar__tap
+                            .sidebar__tapIcon: PeopleIcon
+                            .sidebar__tapText {{ $t('taps.who_we_are') }}
+
 </template>
 <script>
 import ArrowIcon from '@/assets/icons/arrow-back.svg?inline'
+
+// Taps Icons
+import BookIcon from '@/assets/icons/book.svg?inline'
+import PeopleIcon from '@/assets/icons/people.svg?inline'
+import QuestionMarkIcon from '@/assets/icons/question-mark.svg?inline'
+
 export default {
   name: 'AppSidebar',
-  components: { ArrowIcon },
+  components: {
+    ArrowIcon,
+    BookIcon,
+    PeopleIcon,
+    QuestionMarkIcon
+  },
   methods: {
     close () {
       this.$store.commit('closeSidebar')
@@ -100,6 +120,11 @@ export default {
         cursor: pointer;
 
         &:hover { background-color : rgb( var(--gray-200) ) }
+
+        .sidebar__tapIcon {
+            width: 1.3em;
+            margin-inline-end: 0.3em;
+        }
 
     }
 
