@@ -11,13 +11,13 @@
         ul.menu__list
           li.tap
             .tap__icon: BookIcon
-            nuxt-link.tap__link( to='/ref' activeClass='--active' exactActiveClass='--exact-active' ) {{ $t('taps.ref') }}
+            nuxt-link.tap__link( :to="localePath('/ref')" exactActiveClass='--exact-active' ) {{ $t('taps.ref') }}
           li.tap
             .tap__icon: QuestionMarkIcon
-            nuxt-link.tap__link( to='/faq' activeClass='--active' exactActiveClass='--exact-active' ) {{ $t('taps.faq') }}
+            nuxt-link.tap__link( :to="localePath('/faq')" exactActiveClass='--exact-active' ) {{ $t('taps.faq') }}
           li.tap
             .tap__icon: PeopleIcon
-            nuxt-link.tap__link( to='/who_we_are' activeClass='--active' exactActiveClass='--exact-active' ) {{ $t('taps.who_we_are') }}
+            nuxt-link.tap__link( :to="localePath('/who_we_are')" exactActiveClass='--exact-active' ) {{ $t('taps.who_we_are') }}
 
         .menu__buttons
           .menu__searchButton( @click="$store.commit('openSearchWindow')" ): SearchIcon
