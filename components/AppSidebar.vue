@@ -95,8 +95,10 @@ export default {
         &:hover { background-color: rgb( var(--gray-200) ) }
 
         svg {
+
             width: 1.7em;
             fill: rgb( var(--gray-400) );
+
         }
 
     }
@@ -122,8 +124,10 @@ export default {
         &:hover { background-color : rgb( var(--gray-200) ) }
 
         .sidebar__tapIcon {
+
             width: 1.3em;
             margin-inline-end: 0.3em;
+
         }
 
     }

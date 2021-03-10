@@ -30,10 +30,14 @@ export default {
   align-items: center;
 
   &__icon {
+
     height : 100%;
-    animation: 1s appear;
+
     margin-inline-end : 1em;
+
+    animation: 1s appear;
     transform: scale(1.5);
+
   }
 
   &__name { font-weight: bold }
@@ -41,8 +45,8 @@ export default {
 }
 
 @keyframes appear {
-  0% {
-    opacity: 0;
-  }
+
+  0% { opacity: 0 }
+
 }
 </style>

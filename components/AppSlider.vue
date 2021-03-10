@@ -104,7 +104,7 @@ export default {
 .slider {
 
     width : 100%;
-    height: 90vh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -113,21 +113,28 @@ export default {
 
         width: 100%;
         height: 100%;
+
         display: flex;
-        box-sizing: border-box;
-        padding: 1em;
         align-items: center;
         flex-direction: column;
         justify-content: center;
 
+        box-sizing: border-box;
+        padding: 1em;
+
         &__path {
+
           color: rgb( var(--gray-500) );
           text-decoration: underline;
+
           .arrow {
+
             color: rgb( var(--blue-100) );
             font-weight: bold;
             font-family: cursive;
+
           }
+
         }
 
         &__title {
@@ -142,6 +149,7 @@ export default {
           }
 
         &__content {
+
           $max-line: 5;
           $line-height: 1.5em;
 
@@ -159,9 +167,7 @@ export default {
 
         }
 
-        .picture {
-          margin-bottom: 1em;
-        }
+        .picture { margin-bottom: 1em }
 
         @media ( min-width: 1000px ) {
 

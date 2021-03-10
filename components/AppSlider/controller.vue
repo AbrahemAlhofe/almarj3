@@ -56,20 +56,6 @@ export default {
 
     $radius : 1em;
 
-    &__pointer {
-
-        position: absolute;
-
-        width: $radius;
-        height: $radius;
-
-        background-color : rgb( var(--blue-100) );
-        border-radius: 25px;
-
-        transition: all 0.3s ease-in-out;
-
-    }
-
     &__button {
 
         width: $radius;
@@ -83,7 +69,9 @@ export default {
         transition: all 0.5s ease-in-out;
 
         &.--active {
+
             background-color: rgb( var(--blue-100) );
+
         }
 
     }

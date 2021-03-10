@@ -14,13 +14,8 @@ export default {}
 html {
 
   font-family: cairo;
-  font-size: 16px;
+  font-size: clamp( 0.9vw, 1em, 1.6vw );
   word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
 
 }
 </style>

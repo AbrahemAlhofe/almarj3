@@ -64,8 +64,10 @@ export default {
         &:hover { background-color: rgb( var(--gray-200) ) }
 
         svg {
+
           width: 1.7em;
           fill: rgb( var(--gray-400) );
+
         }
 
     }

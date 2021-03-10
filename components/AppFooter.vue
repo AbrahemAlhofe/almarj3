@@ -23,26 +23,33 @@ export default {
 <style lang="scss">
 .footer {
 
-    background-color: rgb(var(--blue-200));
     width: 100%;
     height: 10vh;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
+
     box-sizing: border-box;
+    padding: 1em;
+
+    background-color: rgb(var(--blue-200));
 
     &__copyRight {
+
         color: rgb( var(--white) );
         font-size: 0.8em;
+
     }
 
     .contactUs {
 
         & > * {
+
             width : 2em;
             fill: rgb( var(--white) );
             float: left;
+
         }
 
     }

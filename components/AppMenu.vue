@@ -45,6 +45,8 @@ export default {
 <style lang='scss'>
 .menu {
 
+  position: fixed;
+
   height : 9vh;
   width : 100%;
 
@@ -53,30 +55,31 @@ export default {
   justify-content: space-between;
 
   box-sizing: border-box;
-
   padding : 0.6em;
+
+  background-color: rgb( var(--white) );
 
   &__list {
 
     position: relative;
 
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
 
-    max-width: 30vw;
-
     padding: 0px;
-    margin: auto;
+    margin-inline: 15vw;
+
+    @media ( min-width: 600px ) { display : flex }
 
   }
 
   .tap {
 
     display: inline-flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     padding: .3em;
     border-radius: 0.3em;
@@ -88,22 +91,35 @@ export default {
 
     cursor: pointer;
 
+    &:hover {
+
+      .tap__link {
+        color: rgb( var(--blue-100) )
+      }
+
+      .tap__icon {
+        fill: rgb( var(--blue-100) )
+      }
+
+    }
+
     &__icon {
+
       width: 1.8em;
       display: inline-block;
+      transition: .5s ease-in-out;
+
     }
 
     &__link {
+
+      border-radius: 0.4em;
 
       color: rgb( var(--black) );
       text-decoration: none;
       font-size: 1.2em;
 
-      border-radius: 0.4em;
-
       transition: .3s ease-in-out;
-
-      &:hover { color: rgb( var(--blue-100) ) }
 
       &.--exact-active {
           background-color: rgb( var(--blue-100) );
@@ -135,12 +151,16 @@ export default {
     cursor: pointer;
 
     &:hover {
+
       background-color: rgb( var(--gray-500) );
+
     }
 
     svg {
+
       stroke: rgb( var(--black) );
       width: 1.3em;
+
     }
 
   }
@@ -161,24 +181,17 @@ export default {
 
     cursor: pointer;
 
-    &:hover {
-      background-color: rgb( var(--gray-100) );
-    }
+    &:hover { background-color: rgb( var(--gray-100) ) }
 
     svg {
+
       fill: rgb( var(--black) );
       width: 1.5em;
+
     }
 
-  }
+    @media ( min-width: 600px ) { display: none }
 
-  &__sidebarButton {
-    display: none;
-  }
-
-  @media ( max-width: 600px ) {
-    &__list { display : none }
-    &__sidebarButton { display: flex }
   }
 
 }
