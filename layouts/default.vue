@@ -4,6 +4,7 @@
     AppSidebar
     AppSearchWindow
     Nuxt
+    AppFooter
 </template>
 <script>
 export default {}
