@@ -1,20 +1,24 @@
 <i18n lang='yaml'>
     ar:
       taps:
-          /reference: المرجع
-          /faq: الأسئلة الشائعة
-          /who-we-are: من نحن
+          ref: المرجع
+          faq: الأسئلة الشائعة
+          who_we_are: من نحن
 </i18n>
 <template lang="pug">
     .menu
         Logo.menu__logo( :is-full='true' )
         ul.menu__list
-          li.menu__tap( v-for='( tap__text, tap__link ) of $t("taps")' )
-            nuxt-link.menu__link(
-              :to='tap__link'
-              activeClass='--active'
-              exactActiveClass='--exact-active'
-            ) {{ tap__text }}
+          li.tap
+            .tap__icon: BookIcon
+            nuxt-link.tap__link( to='/ref' activeClass='--active' exactActiveClass='--exact-active' ) {{ $t('taps.ref') }}
+          li.tap
+            .tap__icon: QuestionMarkIcon
+            nuxt-link.tap__link( to='/faq' activeClass='--active' exactActiveClass='--exact-active' ) {{ $t('taps.faq') }}
+          li.tap
+            .tap__icon: PeopleIcon
+            nuxt-link.tap__link( to='/who_we_are' activeClass='--active' exactActiveClass='--exact-active' ) {{ $t('taps.who_we_are') }}
+
         .menu__buttons
           .menu__searchButton( @click="$store.commit('openSearchWindow')" ): SearchIcon
           .menu__sidebarButton( @click="$store.commit('openSidebar')" ): MenuIcon
@@ -24,7 +28,12 @@
 import MenuIcon from '@/assets/icons/menu.svg?inline'
 import SearchIcon from '@/assets/icons/search.svg?inline'
 
-const icons = { MenuIcon, SearchIcon }
+// Taps Icons
+import BookIcon from '@/assets/icons/book.svg?inline'
+import PeopleIcon from '@/assets/icons/people.svg?inline'
+import QuestionMarkIcon from '@/assets/icons/question-mark.svg?inline'
+
+const icons = { MenuIcon, SearchIcon, BookIcon, PeopleIcon, QuestionMarkIcon }
 
 const components = {}
 
@@ -56,16 +65,18 @@ export default {
     align-items: center;
     flex-grow: 1;
 
-    max-width: 20em;
+    max-width: 30vw;
 
     padding: 0px;
     margin: auto;
 
   }
 
-  &__tap {
+  .tap {
 
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 
     padding: .3em;
     border-radius: 0.3em;
@@ -77,30 +88,64 @@ export default {
 
     cursor: pointer;
 
-  }
+    &__icon {
+      width: 1.8em;
+      display: inline-block;
+    }
 
-  &__link {
+    &__link {
 
-    color: rgb( var(--black) );
-    text-decoration: none;
-    font-size: 1.2em;
+      color: rgb( var(--black) );
+      text-decoration: none;
+      font-size: 1.2em;
 
-    border-radius: 0.4em;
+      border-radius: 0.4em;
 
-    transition: .3s ease-in-out;
+      transition: .3s ease-in-out;
 
-    &:hover { color: rgb( var(--blue-100) ) }
+      &:hover { color: rgb( var(--blue-100) ) }
 
-    &.--exact-active {
-        background-color: rgb( var(--blue-100) );
-        color: rgb( var(--white) ) !important;
+      &.--exact-active {
+          background-color: rgb( var(--blue-100) );
+          color: rgb( var(--white) ) !important;
+      }
+
     }
 
   }
 
   &__buttons { display: flex; }
 
-  &__sidebarButton, &__searchButton {
+  &__searchButton {
+
+    width: 2.5em;
+    height: 2.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb( var(--gray-200) );
+
+    border-radius: 0.4em;
+    margin-inline-start : 1em;
+
+    transition: all 0.3s ease-in-out;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb( var(--gray-500) );
+    }
+
+    svg {
+      stroke: rgb( var(--black) );
+      width: 1.3em;
+    }
+
+  }
+
+  &__sidebarButton {
 
     width: 2.5em;
     height: 2.5em;
@@ -122,7 +167,6 @@ export default {
 
     svg {
       fill: rgb( var(--black) );
-      stroke: rgb( var(--black) );
       width: 1.5em;
     }
 
