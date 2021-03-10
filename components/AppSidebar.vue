@@ -76,7 +76,7 @@ export default {
 
         svg {
             width: 1.7em;
-            fill: rgb( var(--gray-300) );
+            fill: rgb( var(--gray-400) );
         }
 
     }

@@ -65,7 +65,7 @@ export default {
 
         svg {
           width: 1.7em;
-          fill: rgb( var(--gray-300) );
+          fill: rgb( var(--gray-400) );
         }
 
     }
@@ -117,7 +117,7 @@ export default {
 
   &__clearButton { fill : red }
 
-  &__searchButton { fill : rgb( var(--gray-300) ) }
+  &__searchButton { fill : rgb( var(--gray-400) ) }
 
 }
 </style>
