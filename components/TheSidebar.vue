@@ -1,7 +1,7 @@
 <i18n lang='yaml'>
     ar:
       taps:
-          ref: المرجع
+          reference: المرجع
           faq: الأسئلة الشائعة
           who_we_are: من نحن
 </i18n>
@@ -22,9 +22,9 @@
                     .sidebar__header
                         .sidebar__closeButton( @click='closeSlot' ): ArrowIcon
                     .sidebar__list
-                        nuxt-link.sidebar__tap( :to="localePath('/ref')" exactActiveClass='--exact-active' )
+                        nuxt-link.sidebar__tap( :to="localePath('/docs')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: BookIcon
-                            .sidebar__tapText {{ $t('taps.ref') }}
+                            .sidebar__tapText {{ $t('taps.reference') }}
                         nuxt-link.sidebar__tap( :to="localePath('/faq')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: QuestionMarkIcon
                             .sidebar__tapText {{ $t('taps.faq') }}

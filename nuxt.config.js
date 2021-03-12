@@ -38,6 +38,10 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    // https://content.nuxtjs.org/
+    ['@nuxt/content', {
+      liveEdit: false
+    }],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
@@ -65,5 +69,9 @@ export default {
   // https://nuxtjs.org/docs/2.x/directory-structure/middleware
   router: {
     middleware : 'i18n'
+  },
+
+  reference: {
+    homePage : 'get-started/intro'
   }
 }

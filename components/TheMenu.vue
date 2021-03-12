@@ -1,7 +1,7 @@
 <i18n lang='yaml'>
     ar:
       taps:
-          ref: المرجع
+          reference: المرجع
           faq: الأسئلة الشائعة
           who_we_are: من نحن
 </i18n>
@@ -11,7 +11,7 @@
         ul.menu__list
           li.tap
             .tap__icon: BookIcon
-            nuxt-link.tap__link( :to="localePath('/ref')" exactActiveClass='--exact-active' ) {{ $t('taps.ref') }}
+            nuxt-link.tap__link( :to="localePath('/docs')" exactActiveClass='--exact-active' ) {{ $t('taps.reference') }}
           li.tap
             .tap__icon: QuestionMarkIcon
             nuxt-link.tap__link( :to="localePath('/faq')" exactActiveClass='--exact-active' ) {{ $t('taps.faq') }}
@@ -47,7 +47,7 @@ export default {
 
   position: fixed;
 
-  height : 9vh;
+  height : 10vh;
   width : 100%;
 
   display: flex;
