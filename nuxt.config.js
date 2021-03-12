@@ -21,6 +21,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '@/plugins/i18n.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -67,9 +68,7 @@ export default {
   },
 
   // https://nuxtjs.org/docs/2.x/directory-structure/middleware
-  router: {
-    middleware : 'i18n'
-  },
+  router: {},
 
   reference: {
     homePage : 'get-started/intro'
