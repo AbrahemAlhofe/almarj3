@@ -7,12 +7,14 @@
 import generateContentList from '@/compositions/generateContentList'
 
 export default {
-  async asyncData ({ app, redirect, $config, params, $content }) {
-    const lang = app.i18n.locale
+  async asyncData ({ app, redirect, $config, params, store }) {
+    const currentLocale = app.i18n.locale
 
-    if (!params.book) { redirect(`${lang}/${$config.reference.homePage}`) }
+    if (!params.book) { redirect(`${currentLocale}/${$config.reference.homePage}`) }
 
-    const articles = await $content(`${lang}`, { deep: true }).only(['title', 'category']).fetch()
+    const articles = await store.dispatch('articles/getAll', {
+      version: 'published'
+    })
 
     const contentList = generateContentList(articles)
 

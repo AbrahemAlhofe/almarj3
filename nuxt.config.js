@@ -39,9 +39,9 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://content.nuxtjs.org/
-    ['@nuxt/content', {
-      liveEdit: false
+    // https://github.com/storyblok/storyblok-nuxt
+    ['storyblok-nuxt', {
+      accessToken: '8zzel9cVTzGIcmMNO4uaOQtt'
     }],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',

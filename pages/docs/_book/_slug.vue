@@ -1,15 +1,13 @@
 <template lang="pug">
-  article.article: NuxtContent( :document='article' )
+  article.article: TheArticleContent( :document='article.content.body' )
 </template>
 <script>
 export default {
-  async asyncData ({ params, $content, app }) {
-    const lang = app.i18n.locale
+  async asyncData ({ params, store }) {
     const book = params.book
     const slug = params.slug
-    const path = `${lang}/${book}/${slug}`
 
-    const article = await $content(path).fetch()
+    const article = await store.dispatch('articles/getOne', { book, slug })
 
     return { article }
   }

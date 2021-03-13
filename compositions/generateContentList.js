@@ -1,11 +1,14 @@
 export default function generateContentList (articles) {
   const contentList = {}
 
-  for (const article of articles) {
-    if (!contentList[article.category]) { contentList[article.category] = {} }
+  articles.forEach((article) => {
+    const articleBook = article.content.book
+    const articleTitle = article.content.title
 
-    contentList[article.category][article.title] = null
-  }
+    if (!contentList[articleBook]) { contentList[articleBook] = {} }
+
+    contentList[articleBook][articleTitle] = null
+  })
 
   return contentList
 }
