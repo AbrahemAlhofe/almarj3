@@ -45,7 +45,7 @@
         .slider__controller: TheSliderController(  v-model='currentSlideIndex' :length='slidesLength' )
 </template>
 <script>
-import onSwipe from '@/compositions/on-swipe'
+import onSwipe from '@/compositions/onSwipe'
 
 export default {
   data () {
