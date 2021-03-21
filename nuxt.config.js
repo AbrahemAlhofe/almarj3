@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config();
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -41,7 +42,7 @@ export default {
   modules: [
     // https://github.com/storyblok/storyblok-nuxt
     ['storyblok-nuxt', {
-      accessToken: '8zzel9cVTzGIcmMNO4uaOQtt'
+      accessToken: process.env.STORYBLOK_AUTH_TOKEN
     }],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
