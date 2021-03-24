@@ -1,13 +1,35 @@
+<i18n lang='yaml'>
+  ar:
+    notify:
+      there is a new content: هناك محتوي جديد
+      reload: أعد التحميل
+</i18n>
 <template lang='pug'>
   .defaultLayout
-    TheMenu.defaultLayout__menu
+    TheNotify( ref='notify' )
     TheSidebar
     TheSearchWindow
+    TheMenu.defaultLayout__menu
     Nuxt.defaultLayout__content
     TheFooter.defaultLayout__footer
 </template>
 <script>
-export default {}
+export default {
+
+  mounted () {
+    const message = this.$t('notify.there is a new content')
+    const actionButtonText = this.$t('notify.reload')
+
+    this.$socket.on('setTimestamp', (timestamp) => {
+      this.$store.commit('content/setTimestamp', timestamp)
+    })
+
+    this.$socket.on('published', () => {
+      this.$refs.notify.notice({ message, actionButtonText }, () => location.reload())
+    })
+  }
+
+}
 </script>
 
 <style lang='scss'>

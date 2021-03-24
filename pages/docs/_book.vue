@@ -12,7 +12,13 @@ export default {
 
     if (!params.book) { redirect(`${currentLocale}/${$config.reference.homePage}`) }
 
-    const articles = await store.dispatch('articles/getAll', {
+    if (store.state.timestamp === null) {
+      await store.dispatch('content/getSpace').then((space) => {
+        store.commit('setTimestamp', space.version)
+      })
+    }
+
+    const articles = await store.dispatch('content/getAll', {
       version: 'published'
     })
 

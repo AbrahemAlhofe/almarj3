@@ -24,7 +24,7 @@ export default {
         .use(remark2rehype)
         .use(html)
         .process(this.document, function (err, file) {
-          console.log(err)
+          if (err) { console.error(err) }
           body = file
         })
 

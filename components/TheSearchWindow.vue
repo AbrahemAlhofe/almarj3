@@ -7,7 +7,8 @@
               SearchIcon.searchInput__searchButton( @click='search' )
               input.searchInput__input( ref='input' v-model='query' )
               ClearIcon.searchInput__clearButton( v-if='query !== ""' @click='clear' )
-            .searchWindow__resultsList
+            .searchWindow__hitsList
+              .searchWindow__hit( v-for='hit of hits' ) {{ hit }}
 </template>
 <script>
 import SearchIcon from '@/assets/icons/search.svg?inline'
@@ -17,12 +18,13 @@ export default {
   components: { SearchIcon, ClearIcon },
   data () {
     return {
-      query: ''
+      query: '',
+      hits: []
     }
   },
   methods: {
     search () {
-
+      this.$algolia.search(this.query).then((hits) => { this.hits = hits })
     },
     clear () {
       this.query = ''

@@ -1,5 +1,6 @@
-const dotenv = require('dotenv').config();
-export default {
+module.exports = {
+  telemetry: false,
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'cairo-pioneers-reference',
@@ -22,7 +23,9 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/i18n.js'
+    '@/plugins/i18n.js',
+    '@/plugins/socket.js',
+    '@/plugins/algolia.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

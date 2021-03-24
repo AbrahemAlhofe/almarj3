@@ -7,7 +7,7 @@ export default {
     const book = params.book
     const slug = params.slug
 
-    const article = await store.dispatch('articles/getOne', { book, slug })
+    const article = await store.dispatch('content/getOne', { book, slug })
 
     return { article }
   }
