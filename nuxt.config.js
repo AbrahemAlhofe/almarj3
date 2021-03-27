@@ -25,7 +25,7 @@ module.exports = {
   plugins: [
     '@/plugins/i18n.js',
     '@/plugins/socket.js',
-    '@/plugins/algolia.js'
+    '@/plugins/algolia.client.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
