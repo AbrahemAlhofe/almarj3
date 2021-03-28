@@ -1,14 +1,22 @@
+<i18n lang='yaml'>
+  ar:
+    loading: جاري البحث
+</i18n>
 <template lang="pug">
     v-overlay( :is-overlay-open='$store.state.isSearchWindowOpen' )
       template( #default='{ isSlotOpen }')
         .searchWindow( v-if='isSlotOpen' )
             .searchWindow__closeButton( @click="close" ): ClearIcon
             .searchInput
-              SearchIcon.searchInput__searchButton( @click='search' )
+              .searchInput__searchButton: SearchIcon
               input.searchInput__input( ref='input' v-model='query' )
-              ClearIcon.searchInput__clearButton( v-if='query !== ""' @click='clear' )
+              .searchInput__clearButton: ClearIcon( v-if='query !== ""' @click='clear' )
             .searchWindow__hitsList
-              .searchWindow__hit( v-for='hit of hits' ) {{ hit }}
+              .searchWindow__loader( v-if='isLoading' ) {{ $t('loading') }}
+              template( v-else )
+                NuxtLink.hit( v-for='hit of hits' :key='hit.id' :to='localePath(`/docs/${hit.full_slug}`)' )
+                  .hit__path {{ hit.content.book }} > {{ hit.name }}
+                  .hit__brief {{ hit.content.description }}
 </template>
 <script>
 import SearchIcon from '@/assets/icons/search.svg?inline'
@@ -19,12 +27,29 @@ export default {
   data () {
     return {
       query: '',
-      hits: []
+      isLoading: false,
+      hits: [],
+      searchRequest: null
     }
+  },
+  watch: {
+
+    query (query) {
+      if (query.trim() !== '') {
+        this.isLoading = true
+
+        clearTimeout(this.searchRequest)
+
+        this.searchRequest = setTimeout(() => {
+          this.search(query).then(() => { this.isLoading = false })
+        }, 700)
+      }
+    }
+
   },
   methods: {
     search () {
-      this.$algolia.search(this.query).then((hits) => { this.hits = hits })
+      return this.$store.dispatch('content/search', this.query).then((hits) => { this.hits = hits })
     },
     clear () {
       this.query = ''
@@ -38,41 +63,52 @@ export default {
 <style lang="scss">
 .searchWindow {
 
-    width: 40em;
-    min-height: 10em;
-    min-width: 15em;
+  width: 40em;
+  min-height: 10em;
+  min-width: 15em;
+
+  box-sizing: border-box;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  overflow: hidden;
+  margin: 1em;
+
+  background-color: rgb( var(--white) );
+
+  &__closeButton {
+
+      width: 2.5em;
+      height: 2.5em;
+
+      border-radius: 50%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+
+      &:hover { background-color: rgb( var(--gray-200) ) }
+
+      svg {
+
+        width: 1.7em;
+        fill: rgb( var(--gray-400) );
+
+      }
+
+  }
+
+  &__loader {
+
+    width: 100%;
+    padding: 0.5em;
 
     box-sizing: border-box;
-    padding: 0.5em;
-    border-radius: 0.5em;
-    overflow: hidden;
-    margin: 1em;
+    text-align: center;
+    font-size: 1.2em;
 
-    background-color: rgb( var(--white) );
-
-    &__closeButton {
-
-        width: 2.5em;
-        height: 2.5em;
-
-        border-radius: 50%;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        cursor: pointer;
-
-        &:hover { background-color: rgb( var(--gray-200) ) }
-
-        svg {
-
-          width: 1.7em;
-          fill: rgb( var(--gray-400) );
-
-        }
-
-    }
+  }
 
 }
 
@@ -84,7 +120,6 @@ export default {
   align-items: center;
 
   margin-top: 1em;
-  padding: .3em;
   border-radius: .5em;
 
   background-color: rgb( var(--gray-200) );
@@ -108,20 +143,72 @@ export default {
 
   &__searchButton, &__clearButton {
 
-    height: 3em;
-    width: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 5em;
+    width: 5em;
 
     border-radius: 0.3em;
 
     font-size: 0.6em;
 
+  }
+
+  &__clearButton {
+
+    fill : red;
+    svg { width: 2.5em }
     cursor: pointer;
 
   }
 
-  &__clearButton { fill : red }
+  &__searchButton {
 
-  &__searchButton { fill : rgb( var(--gray-400) ) }
+    fill : rgb( var(--gray-400) );
+    svg { width: 3em }
+
+  }
+
+}
+
+.searchWindow .searchWindow__hitsList .hit {
+
+  display: block;
+
+  border: 1px solid rgb(var(--gray-300));
+  border-radius: 5px;
+  margin-top: 1em;
+  padding: 0.5em;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  &__path {
+
+    padding: 0.1em;
+
+    font-size: 1.2em;
+    font-weight: 600;
+    color: rgb( var(--blue-100) );
+
+  }
+
+  &__brief {
+
+    color: rgb( var(--gray-500) );
+    font-size: 0.9em;
+    padding: 0.2em;
+
+  }
+
+  &:hover {
+
+    background-color: rgb( var(--gray-100) );
+
+  }
 
 }
 </style>

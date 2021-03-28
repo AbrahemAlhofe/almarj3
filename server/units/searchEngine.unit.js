@@ -13,6 +13,10 @@ class SearchEngine {
         return this.handler.saveObject( article )
     }
 
+    search (query) {
+        return this.handler.search(query).then( res => res.hits )
+    }
+
 }
 
 module.exports = (options) => new SearchEngine(options);

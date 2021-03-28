@@ -24,8 +24,7 @@ module.exports = {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '@/plugins/i18n.js',
-    '@/plugins/socket.js',
-    '@/plugins/algolia.client.js'
+    '@/plugins/socket.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

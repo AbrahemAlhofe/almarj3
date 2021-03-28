@@ -36,6 +36,12 @@ export const actions = {
       ...options,
       timestamp: context.timestamp
     }).then(response => response.data.story)
+  },
+
+  search (context, query) {
+    return new Promise((resolve, reject) => {
+      this.$socket.emit('search', query, resolve)
+    })
   }
 
 }

@@ -29,7 +29,11 @@ async function start() {
 
         socketIo = socket
         socket.emit('setTimestamp', content.__timestamp)
-    
+        
+        socket.on('search', (query, resolve) => {
+            searchEngine.search(query).then( resolve )
+        })
+
     })
 
     app.use( express.json() )
