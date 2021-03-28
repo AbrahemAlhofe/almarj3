@@ -3,7 +3,7 @@ export default function generateContentList (articles) {
 
   articles.forEach((article) => {
     const articleBook = article.content.book
-    const articleTitle = article.content.title
+    const articleTitle = article.name
 
     if (!contentList[articleBook]) { contentList[articleBook] = {} }
 
