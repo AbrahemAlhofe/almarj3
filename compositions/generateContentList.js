@@ -7,7 +7,7 @@ export default function generateContentList (articles) {
 
     if (!contentList[articleBook]) { contentList[articleBook] = {} }
 
-    contentList[articleBook][articleTitle] = null
+    contentList[articleBook][articleTitle] = article.full_slug
   })
 
   return contentList

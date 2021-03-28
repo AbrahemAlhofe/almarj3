@@ -5,7 +5,7 @@
         .contentListTap__title {{ title }}
 
       .contentListTap__list
-        .contentListTap__link( v-for='( _, title ) in links' ) {{ title }}
+        NuxtLink.contentListTap__link( v-for='( slug, title ) in links' :key='slug' :to='localePath(`/docs/${slug}`)' ) {{ title }}
 </template>
 <script>
 import ChevronUpIcon from '@/assets/icons/chevron-up.svg?inline'
@@ -91,6 +91,9 @@ export default {
 
         padding-block: 1em;
         padding-inline: 2em;
+        display: block;
+        color: rgb( var(--black) );
+        text-decoration: none;
 
     }
 
