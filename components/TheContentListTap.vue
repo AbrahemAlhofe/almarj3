@@ -32,6 +32,8 @@ export default {
 <style lang="scss">
 .contentListTap {
 
+    cursor: pointer;
+
     &.--open {
 
         .contentListTap__icon {

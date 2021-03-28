@@ -19,7 +19,6 @@ export default {
 
   width: 20vw;
   padding: 1em;
-  cursor: pointer;
 
 }
 </style>

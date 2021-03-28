@@ -152,7 +152,7 @@ export default {
 
     &:hover {
 
-      background-color: rgb( var(--gray-500) );
+      background-color: rgb( var(--gray-300) );
 
     }
 
