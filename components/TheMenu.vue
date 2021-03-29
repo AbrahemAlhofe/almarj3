@@ -69,62 +69,13 @@ export default {
     flex-grow: 1;
 
     padding: 0px;
-    margin-inline: 15vw;
+    margin-inline: 5vw;
 
-    @media ( min-width: 600px ) { display : flex }
+    @media ( min-width: 768px ) {
 
-  }
-
-  .tap {
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: .3em;
-    border-radius: 0.3em;
-
-    color: rgb( var(--black) );
-    text-align: center;
-
-    list-style-type: none;
-
-    cursor: pointer;
-
-    &:hover {
-
-      .tap__link {
-        color: rgb( var(--blue-100) )
-      }
-
-      .tap__icon {
-        fill: rgb( var(--blue-100) )
-      }
-
-    }
-
-    &__icon {
-
-      width: 1.8em;
-      display: inline-block;
-      transition: .5s ease-in-out;
-
-    }
-
-    &__link {
-
-      border-radius: 0.4em;
-
-      color: rgb( var(--black) );
-      text-decoration: none;
-      font-size: 1.2em;
-
-      transition: .3s ease-in-out;
-
-      &.--exact-active {
-          background-color: rgb( var(--blue-100) );
-          color: rgb( var(--white) ) !important;
-      }
+      display: flex;
+      width: 46vw;
+      flex-grow: unset;
 
     }
 
@@ -150,11 +101,7 @@ export default {
 
     cursor: pointer;
 
-    &:hover {
-
-      background-color: rgb( var(--gray-300) );
-
-    }
+    &:hover { background-color: rgb( var(--gray-300) ) }
 
     svg {
 
@@ -191,6 +138,61 @@ export default {
     }
 
     @media ( min-width: 600px ) { display: none }
+
+  }
+
+}
+
+.menu .tap {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: .3em;
+  border-radius: 0.3em;
+
+  color: rgb( var(--black) );
+  text-align: center;
+
+  list-style-type: none;
+
+  cursor: pointer;
+
+  &:hover {
+
+    .tap__link {
+      color: rgb( var(--blue-100) )
+    }
+
+    .tap__icon {
+      fill: rgb( var(--blue-100) )
+    }
+
+  }
+
+  &__icon {
+
+    width: 1.8em;
+    display: inline-block;
+    transition: .5s ease-in-out;
+
+  }
+
+  &__link {
+
+    border-radius: 0.4em;
+
+    color: rgb( var(--black) );
+    text-decoration: none;
+    font-size: 1.2em;
+
+    transition: .3s ease-in-out;
+
+    &.--exact-active {
+        background-color: rgb( var(--blue-100) );
+        color: rgb( var(--white) ) !important;
+    }
 
   }
 
