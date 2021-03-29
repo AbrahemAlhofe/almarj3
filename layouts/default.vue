@@ -36,7 +36,7 @@ export default {
 html {
 
   font-family: cairo;
-  font-size: clamp( 0.9vw, 1em, 1.6vw );
+  font-size: clamp( 16px, 1em, 1.6vw );
   word-spacing: 1px;
 
 }
@@ -44,7 +44,7 @@ html {
 .defaultLayout {
 
   display: grid;
-  grid-template-rows: 1fr minmax(100vh, auto) 1fr;
+  grid-template-rows: 10vh minmax(100vh, auto) 1fr;
 
   &__menu {
 

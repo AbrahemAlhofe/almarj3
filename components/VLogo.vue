@@ -3,7 +3,7 @@
     logo__name: "برلمان طلائع القاهرة"
 </i18n>
 <template lang='pug'>
-  .logo( :class='{ "logo--isFull" : isFull }' )
+  .logo( :class='{ "--full" : isFull }' )
     Logo.logo__icon
     .logo__name( v-if='isFull' ) {{ $t('logo__name') }}
 </template>
@@ -23,17 +23,15 @@ export default {
 <style lang='scss'>
 .logo {
 
-  width : 13em;
-  height : 2em;
+  width: fit-content;
+  height: 2em;
 
-  display : flex;
+  display: flex;
   align-items: center;
 
   &__icon {
 
-    height : 100%;
-
-    margin-inline-end : 1em;
+    height: 100%;
 
     animation: 1s appear;
     transform: scale(1.5);
@@ -41,6 +39,14 @@ export default {
   }
 
   &__name { font-weight: bold }
+
+  &.--full {
+
+    width : 13em;
+
+    svg { margin-inline-end: 1em }
+
+  }
 
 }
 
