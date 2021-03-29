@@ -45,7 +45,7 @@ export default {
 
     position: relative;
 
-    width : 4em;
+    width : 6em;
 
     display: flex;
     justify-content: space-between;

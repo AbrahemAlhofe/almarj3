@@ -44,7 +44,7 @@ html {
 .defaultLayout {
 
   display: grid;
-  grid-template-rows: 10vh minmax(100vh, auto) 1fr;
+  grid-template-rows: 10vh minmax(90vh, auto) 1fr;
 
   &__menu {
 
