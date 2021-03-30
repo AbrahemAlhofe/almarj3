@@ -1,8 +1,12 @@
+import generateContentList from '@/compositions/generateContentList'
+
 export const state = () => ({
 
   timestamp: null,
 
-  articles: []
+  articles: [],
+
+  _contentList: []
 
 })
 
@@ -12,8 +16,22 @@ export const mutations = {
     state.timestamp = newTimestamp
   },
 
-  addArticle (state, article) {
-    state.articles.push(article)
+  cashArticles (state, articles) {
+    state.articles = state.articles.concat(articles)
+  },
+
+  cashContentList (state, articles) {
+    state._contentList.concat(articles)
+  }
+
+}
+
+export const getters = {
+
+  contentList (state) {
+    if (state._contentList.length === 0) { state._contentList = generateContentList(state.articles) }
+    console.log(state._contentList)
+    return state._contentList
   }
 
 }

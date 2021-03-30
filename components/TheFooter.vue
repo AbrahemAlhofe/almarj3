@@ -5,11 +5,11 @@
 <template lang="pug">
     .footer
         v-logo.footer__logo
-        .footer__copyRight {{ $t('copy_right')}}
         .contactUs
             a.contactUs__facebook( :href='contacts.facebook' ): FacebookIcon
             a.contactUs__whatsapp( :href='contacts.whatsapp' ): WhatsappIcon
             a.contactUs__email( :href='contacts.email' ): EmailIcon
+        .footer__copyRight {{ $t('copy_right')}}
 </template>
 <script>
 import FacebookIcon from '@/assets/icons/facebook.svg?inline'
@@ -33,21 +33,34 @@ export default {
 .footer {
 
     width: 100%;
-    height: 10vh;
+    height: 20vh;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 
     box-sizing: border-box;
     padding: 1em;
 
     background-color: rgb(var(--black));
 
+    @media (min-width: 768px) { flex-direction: row }
+
     &__copyRight {
 
         color: rgb( var(--white) );
         font-size: 0.8em;
+
+    }
+
+    &__logo {
+
+        @media (min-width: 768px) {
+
+            order: 1;
+
+        }
 
     }
 

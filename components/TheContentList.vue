@@ -17,8 +17,10 @@ export default {
 <style lang="scss">
 .contentList {
 
-  width: 20vw;
-  padding: 1em;
+  margin: 1em;
+  display: none;
+
+  @media (min-width: 768px) { display: block }
 
 }
 </style>

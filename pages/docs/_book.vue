@@ -4,8 +4,6 @@
       NuxtChild.referencePage__content
 </template>
 <script>
-import generateContentList from '@/compositions/generateContentList'
-
 export default {
   async asyncData ({ app, redirect, $config, params, store }) {
     const currentLocale = app.i18n.locale
@@ -22,9 +20,9 @@ export default {
       version: 'published'
     })
 
-    const contentList = generateContentList(articles)
+    store.commit('content/cashArticles', articles)
 
-    return { contentList }
+    return { contentList: store.getters['content/contentList'] }
   }
 }
 </script>
