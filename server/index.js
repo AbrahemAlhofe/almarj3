@@ -44,9 +44,7 @@ async function start() {
 
         const article = await content.getArticleById(req.body.story_id)
         
-        searchEngine.indexArticle( article ).then((article) => {
-            console.log( article )
-        }).catch( err => console.log( err ) )
+        searchEngine.indexArticle( article ).catch( err => console.log( err ) )
 
         content.$updateTimestamp()
         
