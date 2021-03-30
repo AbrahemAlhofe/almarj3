@@ -6,9 +6,7 @@
 <script>
 export default {
   async asyncData ({ app, redirect, $config, params, store }) {
-    const currentLocale = app.i18n.locale
-
-    if (!params.book) { redirect(`${currentLocale}/${$config.reference.homePage}`) }
+    if (!params.book) { redirect('/docs/intro/what-is-political') }
 
     if (store.state.timestamp === null) {
       await store.dispatch('content/getSpace').then((space) => {
