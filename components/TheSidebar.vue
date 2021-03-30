@@ -21,7 +21,7 @@
                 .sidebar( v-if='isSlotOpen' )
                     .sidebar__header
                         .sidebar__closeButton( @click='closeSlot' ): ArrowIcon
-                    .sidebar__list
+                    .sidebar__linksList
                         nuxt-link.sidebar__tap( :to="localePath('/docs')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: BookIcon
                             .sidebar__tapText {{ $t('taps.reference') }}
@@ -31,9 +31,15 @@
                         nuxt-link.sidebar__tap( :to="localePath('/who_we_are')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: PeopleIcon
                             .sidebar__tapText {{ $t('taps.who_we_are') }}
-
+                    .sidebar__contentList
+                        template( v-if='contentList.length !== 0' )
+                            hr
+                            template( v-for='( links, tapTitle ) in contentList' )
+                                TheContentListTap( :title='tapTitle' :links='links' )
 </template>
 <script>
+import TheContentListTap from '@/components/TheContentListTap.vue'
+
 import ArrowIcon from '@/assets/icons/arrow-back.svg?inline'
 
 // Taps Icons
@@ -41,13 +47,23 @@ import BookIcon from '@/assets/icons/book.svg?inline'
 import PeopleIcon from '@/assets/icons/people.svg?inline'
 import QuestionMarkIcon from '@/assets/icons/question-mark.svg?inline'
 
+const Icons = {
+  ArrowIcon,
+  BookIcon,
+  PeopleIcon,
+  QuestionMarkIcon
+}
+
 export default {
   name: 'AppSidebar',
-  components: {
-    ArrowIcon,
-    BookIcon,
-    PeopleIcon,
-    QuestionMarkIcon
+  components: { ...Icons, TheContentListTap },
+  computed: {
+
+    contentList () {
+      console.log(this.$store.getters['content/contentList'])
+      return this.$store.getters['content/contentList']
+    }
+
   },
   methods: {
     close () {

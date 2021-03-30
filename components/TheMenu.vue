@@ -137,7 +137,7 @@ export default {
 
     }
 
-    @media ( min-width: 600px ) { display: none }
+    @media ( min-width: 768px ) { display: none }
 
   }
 
