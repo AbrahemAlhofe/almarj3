@@ -49,7 +49,7 @@ export default {
   data () {
     return {
       currentSlideIndex: 0,
-      autoMove: false,
+      autoMove: true,
       autoMoveInterval: null
     }
   },
