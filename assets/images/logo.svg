@@ -1,12 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
-    <defs>
-        <style>.cls-1{fill:#00aeef;}.border{fill:none;stroke:#00aeef;stroke-miterlimit:10;stroke-width:2px;}</style>
-    </defs>
-    <rect class="cls-1" x="47.25" y="111.77" width="155.5" height="6.01"/>
-    <rect class="cls-1" x="179.12" y="130.66" width="6.01" height="54.96"/>
-    <rect class="cls-1" x="141.04" y="130.66" width="6.01" height="54.96"/>
-    <rect class="cls-1" x="102.96" y="130.66" width="6.01" height="54.96"/>
-    <rect class="cls-1" x="64.87" y="130.66" width="6.01" height="54.96"/>
-    <path class="cls-1" d="M162.28,101.65h-6a31.27,31.27,0,0,0-62.54,0h-6a37.28,37.28,0,0,1,74.56,0Z"/>
-    <rect class="border" x="19.67" y="19.67" width="210.67" height="210.67" rx="9.08" ry="9.08"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" >
+    <rect fill='#00aeef' x="47.25" y="111.77" width="155.5" height="6.01"></rect>
+    <rect fill='#00aeef' x="179.12" y="130.66" width="6.01" height="54.96"></rect>
+    <rect fill='#00aeef' x="141.04" y="130.66" width="6.01" height="54.96"></rect>
+    <rect fill='#00aeef' x="102.96" y="130.66" width="6.01" height="54.96"></rect>
+    <rect fill='#00aeef' x="64.87" y="130.66" width="6.01" height="54.96"></rect>
+    <path fill='#00aeef' d="M162.28,101.65h-6a31.27,31.27,0,0,0-62.54,0h-6a37.28,37.28,0,0,1,74.56,0Z"></path>
+    <rect fill='none' stroke='#00aeef' stroke-width='2px' x="19.67" y="19.67" width="210.67" height="210.67" rx="9.08" ry="9.08"></rect>  
 </svg>
