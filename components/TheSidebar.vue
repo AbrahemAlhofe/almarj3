@@ -21,10 +21,10 @@
                     .sidebar__header
                         .sidebar__closeButton( @click='closeSlot' ): ArrowIcon
                     .sidebar__linksList
-                        nuxt-link.sidebar__tap( :to="localePath('/docs')" exactActiveClass='--exact-active' )
+                        nuxt-link.sidebar__tap( no-prefetch :to="localePath('/docs')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: BookIcon
                             .sidebar__tapText {{ $t('taps.reference') }}
-                        nuxt-link.sidebar__tap( :to="localePath('/who_we_are')" exactActiveClass='--exact-active' )
+                        nuxt-link.sidebar__tap( no-prefetch :to="localePath('/who_we_are')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: PeopleIcon
                             .sidebar__tapText {{ $t('taps.who_we_are') }}
                     .sidebar__contentList

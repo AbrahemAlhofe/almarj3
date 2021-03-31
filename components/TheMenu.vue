@@ -10,10 +10,10 @@
         ul.menu__list
           li.tap
             .tap__icon: BookIcon
-            nuxt-link.tap__link( :to="localePath('/docs')" exactActiveClass='--exact-active' ) {{ $t('taps.reference') }}
+            nuxt-link.tap__link( no-prefetch :to="localePath('/docs')" exactActiveClass='--exact-active' ) {{ $t('taps.reference') }}
           li.tap
             .tap__icon: PeopleIcon
-            nuxt-link.tap__link( :to="localePath('/who-we-are')" exactActiveClass='--exact-active' ) {{ $t('taps.who_we_are') }}
+            nuxt-link.tap__link( no-prefetch :to="localePath('/who-we-are')" exactActiveClass='--exact-active' ) {{ $t('taps.who_we_are') }}
 
         .menu__buttons
           .menu__searchButton( @click="$store.commit('openSearchWindow')" ): SearchIcon
