@@ -2,7 +2,6 @@
     ar:
       taps:
           reference: المرجع
-          faq: الأسئلة الشائعة
           who_we_are: من نحن
 </i18n>
 <template lang="pug">
@@ -25,9 +24,6 @@
                         nuxt-link.sidebar__tap( :to="localePath('/docs')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: BookIcon
                             .sidebar__tapText {{ $t('taps.reference') }}
-                        nuxt-link.sidebar__tap( :to="localePath('/faq')" exactActiveClass='--exact-active' )
-                            .sidebar__tapIcon: QuestionMarkIcon
-                            .sidebar__tapText {{ $t('taps.faq') }}
                         nuxt-link.sidebar__tap( :to="localePath('/who_we_are')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: PeopleIcon
                             .sidebar__tapText {{ $t('taps.who_we_are') }}

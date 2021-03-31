@@ -2,7 +2,6 @@
     ar:
       taps:
           reference: المرجع
-          faq: الأسئلة الشائعة
           who_we_are: من نحن
 </i18n>
 <template lang="pug">
@@ -13,11 +12,8 @@
             .tap__icon: BookIcon
             nuxt-link.tap__link( :to="localePath('/docs')" exactActiveClass='--exact-active' ) {{ $t('taps.reference') }}
           li.tap
-            .tap__icon: QuestionMarkIcon
-            nuxt-link.tap__link( :to="localePath('/faq')" exactActiveClass='--exact-active' ) {{ $t('taps.faq') }}
-          li.tap
             .tap__icon: PeopleIcon
-            nuxt-link.tap__link( :to="localePath('/who_we_are')" exactActiveClass='--exact-active' ) {{ $t('taps.who_we_are') }}
+            nuxt-link.tap__link( :to="localePath('/who-we-are')" exactActiveClass='--exact-active' ) {{ $t('taps.who_we_are') }}
 
         .menu__buttons
           .menu__searchButton( @click="$store.commit('openSearchWindow')" ): SearchIcon
@@ -74,7 +70,7 @@ export default {
     @media ( min-width: 768px ) {
 
       display: flex;
-      width: 46vw;
+      width: 20vw;
       flex-grow: unset;
 
     }
