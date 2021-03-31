@@ -1,6 +1,6 @@
 <template lang='pug'>
   .defaultLayer__indexPage
-    TheSlider
+    ClientOnly: TheSlider
 </template>
 
 <script>
