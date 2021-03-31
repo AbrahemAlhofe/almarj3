@@ -41,5 +41,7 @@ export default {
 
   p { text-align: justify }
 
+  img { width: 100% }
+
 }
 </style>
