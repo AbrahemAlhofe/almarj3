@@ -44,6 +44,7 @@ export const actions = {
   getAll (context, options = {}) {
     return this.$storyapi.getAll('cdn/stories', {
       ...options,
+      sort_by: 'content.position:asc',
       timestamp: context.timestamp
     })
   },
@@ -52,14 +53,9 @@ export const actions = {
     const cashedArticles = context.state.articles
     const articleFullSlug = `/${book}/${slug}`
 
-    console.log(cashedArticles)
-
     if (cashedArticles.length !== 0) {
-      console.log({ articleFullSlug })
       const articleIndex = cashedArticles.findIndex(article => article.fullSlug === articleFullSlug)
-      console.log({ articleIndex })
       const article = cashedArticles[articleIndex]
-      console.log({ article })
       return article
     }
 
