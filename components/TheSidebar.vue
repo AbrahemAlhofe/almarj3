@@ -28,9 +28,9 @@
                             .sidebar__tapIcon: PeopleIcon
                             .sidebar__tapText {{ $t('taps.who_we_are') }}
                     .sidebar__contentList
-                        template( v-if='contentList.length !== 0' )
+                        template( v-if='$store.state.content.contentList.length !== 0' )
                             hr
-                            template( v-for='( links, tapTitle ) in contentList' )
+                            template( v-for='( links, tapTitle ) in $store.state.content.contentList' )
                                 TheContentListTap( :title='tapTitle' :links='links' )
 </template>
 <script>
@@ -53,14 +53,6 @@ const Icons = {
 export default {
   name: 'AppSidebar',
   components: { ...Icons, TheContentListTap },
-  computed: {
-
-    contentList () {
-      console.log(this.$store.getters['content/contentList'])
-      return this.$store.getters['content/contentList']
-    }
-
-  },
   methods: {
     close () {
       this.$store.commit('closeSidebar')
