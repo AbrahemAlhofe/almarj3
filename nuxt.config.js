@@ -49,8 +49,8 @@ module.exports = {
     '@nuxtjs/pwa',
     // https://i18n.nuxtjs.org
     ['nuxt-i18n', {
-      baseUrl : 'https://cpr.heroku.com',
-      seo : false,
+      baseUrl : process.env.BASE_URL,
+      seo : true,
       strategy : 'prefix',
       locales : [
         { code: 'ar', iso: 'ar-EG', dir: 'rtl', name : 'عربي' }

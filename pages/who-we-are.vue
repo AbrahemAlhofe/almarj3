@@ -1,6 +1,9 @@
 <i18n lang='yaml'>
     ar:
-        head: من نحن ؟
+        head:
+            title: من نحن
+            description: نحن مجموعه من الطلائع تترواح أعمارنا من سن ١٠ وحتي ١٨ عاماً وأهم ما يجمعنا هو كوننا أعضاء ببرلمان طلائع القاهرة والذي يعد نموذج محاكاة لمجلس النواب المصري التابع للإدارة المركزية للبرلمان والتعليم المدني بوزارة الشباب والرياضة نقدم لكم من خلال هذا الموقع الإلكتروني ' مرجع الحياة السياسية الإلكتروني المقدم من برلمان طلائع القاهرة '
+        title: من نحن ؟
         body: "
             بالتأكيد يراودك سؤالٌ كهذا
             ولهذا دعنا نجيب عليه :
@@ -17,9 +20,19 @@
 </i18n>
 <template lang='pug'>
     .whoWeAre
-        h1.whoWeAre__head {{ $t('head') }}
+        h1.whoWeAre__head {{ $t('title') }}
         .whoWeAre__body {{ $t('body') }}
 </template>
+<script>
+export default {
+  head () {
+    return {
+      title: this.$t('head.title'),
+      description: this.$t('head.description')
+    }
+  }
+}
+</script>
 <style lang='scss'>
 .whoWeAre {
 

@@ -1,5 +1,7 @@
 <i18n lang='yaml'>
   ar:
+    head:
+      title: مرجع برلمان طلائع القاهرة
     notify:
       there is a new content: هناك محتوي جديد
       reload: أعد التحميل
@@ -27,6 +29,14 @@ export default {
     this.$socket.on('published', () => {
       this.$refs.notify.notice({ message, actionButtonText }, () => location.reload())
     })
+  },
+
+  head () {
+    return {
+
+      titleTemplate: `%s | ${this.$t('head.title')}`
+
+    }
   }
 
 }
