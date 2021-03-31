@@ -6,9 +6,9 @@
 </i18n>
 <template lang='pug'>
   .defaultLayout
-    TheNotify( ref='notify' )
-    TheSidebar
-    TheSearchWindow
+    ClientOnly: TheNotify( ref='notify' )
+    ClientOnly: TheSidebar
+    ClientOnly: TheSearchWindow
     TheMenu.defaultLayout__menu
     Nuxt.defaultLayout__content
     TheFooter.defaultLayout__footer
@@ -40,6 +40,8 @@ html {
   word-spacing: 1px;
 
 }
+
+body { margin: 0px }
 
 .defaultLayout {
 

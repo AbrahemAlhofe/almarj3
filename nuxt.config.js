@@ -16,7 +16,6 @@ module.exports = {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    'normalize.css/normalize.css',
     '@/assets/fonts/Cairo/load.css',
     '@/assets/main.css'
   ],
@@ -46,14 +45,12 @@ module.exports = {
     ['storyblok-nuxt', {
       accessToken: process.env.STORYBLOK_AUTH_TOKEN
     }],
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://i18n.nuxtjs.org
     ['nuxt-i18n', {
       baseUrl : 'https://cpr.heroku.com',
-      seo : true,
+      seo : false,
       strategy : 'prefix',
       locales : [
         { code: 'ar', iso: 'ar-EG', dir: 'rtl', name : 'عربي' }
