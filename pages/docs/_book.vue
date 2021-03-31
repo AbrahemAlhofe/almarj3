@@ -5,9 +5,7 @@
 </template>
 <script>
 export default {
-  async asyncData ({ app, redirect, $config, params, store }) {
-    if (!params.book) { redirect('/docs/intro/what-is-political') }
-
+  async asyncData ({ store }) {
     if (store.state.timestamp === null) {
       await store.dispatch('content/getSpace').then((space) => {
         store.commit('setTimestamp', space.version)

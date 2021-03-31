@@ -30,7 +30,6 @@ export const getters = {
 
   contentList (state) {
     if (state._contentList.length === 0) { state._contentList = generateContentList(state.articles) }
-    console.log(state._contentList)
     return state._contentList
   }
 
