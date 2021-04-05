@@ -4,7 +4,6 @@
       NuxtChild.referencePage__content
 </template>
 <script>
-import generateContentList from '@/compositions/generateContentList'
 export default {
   async asyncData ({ store }) {
     if (store.state.timestamp === null) {
@@ -19,10 +18,9 @@ export default {
 
     store.commit('content/cashArticles', articles)
 
-    const isContentListCashed = Object.keys(store.state.content.contentList).length !== 0
-    if (!isContentListCashed) { store.commit('content/cashContentList', generateContentList(store.state.content.articles)) }
+    const contentList = await store.dispatch('content/getContentList')
 
-    return { contentList: store.state.content.contentList }
+    return { contentList }
   }
 }
 </script>

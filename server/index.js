@@ -42,6 +42,11 @@ async function start() {
 
         if ( req.body.action !== 'published' ) return next();
 
+        consola.info({
+            message: 'There is a new content',
+            badge: true
+        })
+
         const article = await content.getArticleById(req.body.story_id)
         
         searchEngine.indexArticle( article ).catch( err => console.log( err ) )

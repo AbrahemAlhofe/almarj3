@@ -30,8 +30,9 @@
                     .sidebar__contentList
                         template( v-if='$store.state.content.contentList.length !== 0' )
                             hr
-                            template( v-for='( links, tapTitle ) in $store.state.content.contentList' )
-                                TheContentListTap( :title='tapTitle' :links='links' )
+                            template( v-for='tap of contentList' )
+                                TheContentListTap( :title='tap.title' :links='tap.links' )
+
 </template>
 <script>
 import TheContentListTap from '@/components/TheContentListTap.vue'

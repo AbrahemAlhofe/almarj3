@@ -4,7 +4,7 @@ export const state = () => ({
 
   articles: [],
 
-  contentList: {}
+  contentList: []
 
 })
 
@@ -26,6 +26,31 @@ export const mutations = {
 
 export const actions = {
 
+  async getContentList (context, options = {}) {
+    const isContentListCashed = context.state.contentList.length !== 0
+
+    if (isContentListCashed) {
+      return context.state.contentList
+    } else {
+      const links = await context.dispatch('getLinks')
+      const books = links.filter(link => link.is_folder).map(book => ({ title: book.name, links: [], id: book.id }))
+      const articles = links.filter(link => !link.is_folder)
+
+      books.map((book) => {
+        book.links = articles.filter(article => article.parent_id === book.id)
+        return book
+      })
+
+      context.commit('cashContentList', books)
+
+      return books
+    }
+  },
+
+  getLinks (context, options = {}) {
+    return this.$storyapi.get('cdn/links', options).then(({ data: { links } }) => Object.values(links))
+  },
+
   getSpace (context, options = {}) {
     return this.$storyapi.get('cdn/spaces/me', {})
   },
@@ -33,7 +58,6 @@ export const actions = {
   getAll (context, options = {}) {
     return this.$storyapi.getAll('cdn/stories', {
       ...options,
-      sort_by: 'content.position:asc',
       timestamp: context.timestamp
     })
   },

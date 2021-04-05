@@ -1,15 +1,15 @@
 <template lang="pug">
   .contentList
-    template( v-for='( links, tapTitle ) in contentList' )
-      TheContentListTap( :title='tapTitle' :links='links' )
+    template( v-for='tap of contentList' )
+      TheContentListTap( :title='tap.title' :links='tap.links' )
 
 </template>
 <script>
 export default {
   props: {
     contentList: {
-      type: Object,
-      default: () => ({})
+      type: Array,
+      default: () => []
     }
   }
 }
