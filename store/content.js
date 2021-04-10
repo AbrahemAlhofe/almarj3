@@ -2,7 +2,7 @@ export const state = () => ({
 
   timestamp: null,
 
-  articles: [],
+  cashedArticles: [],
 
   contentList: []
 
@@ -15,7 +15,13 @@ export const mutations = {
   },
 
   cashArticles (state, articles) {
-    state.articles = state.articles.concat(articles)
+    articles.forEach((article, articleIndex) => {
+      const isArticleCashedBefore = state.cashedArticles.findIndex(cashedArticle => article.id === cashedArticle.id) !== -1
+      const updateCashedArticle = (article) => { state.cashedArticles[articleIndex] = article }
+      if (isArticleCashedBefore) { updateCashedArticle(article) } else { state.cashedArticles.push(article) }
+    })
+
+    return articles
   },
 
   cashContentList (state, contentList) {
@@ -63,19 +69,23 @@ export const actions = {
   },
 
   getOne (context, { book, slug, ...options }) {
-    const cashedArticles = context.state.articles
-    const articleFullSlug = `/${book}/${slug}`
+    const cashedArticles = context.state.cashedArticles
+    const articleFullSlug = `${book}/${slug}`
+    const cashedArticleIndex = cashedArticles.findIndex(article => article.full_slug === articleFullSlug)
+    const isArticleCashedBefore = cashedArticleIndex !== -1
 
-    if (cashedArticles.length !== 0) {
-      const articleIndex = cashedArticles.findIndex(article => article.fullSlug === articleFullSlug)
-      const article = cashedArticles[articleIndex]
+    if (isArticleCashedBefore) {
+      const article = cashedArticles[cashedArticleIndex]
       return article
     }
 
     return this.$storyapi.get(`cdn/stories/${book}/${slug}`, {
       ...options,
       timestamp: context.timestamp
-    }).then(response => response.data.story)
+    }).then(response => response.data.story).then((article) => {
+      context.commit('cashArticles', [article])
+      return article
+    })
   },
 
   search (context, query) {

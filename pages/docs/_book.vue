@@ -12,12 +12,6 @@ export default {
       })
     }
 
-    const articles = await store.dispatch('content/getAll', {
-      version: 'published'
-    })
-
-    store.commit('content/cashArticles', articles)
-
     const contentList = await store.dispatch('content/getContentList')
 
     return { contentList }
