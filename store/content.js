@@ -57,10 +57,6 @@ export const actions = {
     return this.$storyapi.get('cdn/links', options).then(({ data: { links } }) => Object.values(links))
   },
 
-  getSpace (context, options = {}) {
-    return this.$storyapi.get('cdn/spaces/me', {})
-  },
-
   getAll (context, options = {}) {
     return this.$storyapi.getAll('cdn/stories', {
       ...options,

@@ -6,14 +6,7 @@
 <script>
 export default {
   async asyncData ({ store }) {
-    if (store.state.contentVersion === null) {
-      await store.dispatch('content/getSpace').then((space) => {
-        store.commit('setContentVersion', space.version)
-      })
-    }
-
     const contentList = await store.dispatch('content/getContentList')
-
     return { contentList }
   }
 }
