@@ -6,9 +6,9 @@
 <script>
 export default {
   async asyncData ({ store }) {
-    if (store.state.timestamp === null) {
+    if (store.state.contentVersion === null) {
       await store.dispatch('content/getSpace').then((space) => {
-        store.commit('setTimestamp', space.version)
+        store.commit('setContentVersion', space.version)
       })
     }
 

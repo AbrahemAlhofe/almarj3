@@ -1,6 +1,6 @@
 export const state = () => ({
 
-  timestamp: null,
+  contentVersion: null,
 
   cashedArticles: [],
 
@@ -10,8 +10,8 @@ export const state = () => ({
 
 export const mutations = {
 
-  setTimestamp (state, newTimestamp) {
-    state.timestamp = newTimestamp
+  setContentVersion (state, newContentVersion) {
+    state.contentVersion = newContentVersion
   },
 
   cashArticles (state, articles) {
@@ -64,7 +64,7 @@ export const actions = {
   getAll (context, options = {}) {
     return this.$storyapi.getAll('cdn/stories', {
       ...options,
-      timestamp: context.timestamp
+      contentVersion: context.contentVersion
     })
   },
 
@@ -81,7 +81,7 @@ export const actions = {
 
     return this.$storyapi.get(`cdn/stories/${book}/${slug}`, {
       ...options,
-      timestamp: context.timestamp
+      contentVersion: context.contentVersion
     }).then(response => response.data.story).then((article) => {
       context.commit('cashArticles', [article])
       return article

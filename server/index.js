@@ -28,7 +28,7 @@ async function start() {
         })
 
         socketIo = socket
-        socket.emit('setTimestamp', content.__timestamp)
+        socket.emit('setContentVersion', content.__contentVersion)
         
         socket.on('search', (query, resolve) => {
             searchEngine.search(query).then( resolve )
@@ -51,11 +51,11 @@ async function start() {
         
         searchEngine.indexArticle( article ).catch( err => console.log( err ) )
 
-        content.$updateTimestamp()
+        content.$updateContentVersion()
         
         // If there is any client connected notify him there is a new update in conent
         if ( socketIo !== null ) {
-            socketIo.emit('setTimestamp', content.__timestamp)
+            socketIo.emit('setContentVersion', content.__contentVersion)
             socketIo.emit('published')
         }
 

@@ -4,17 +4,17 @@ class Content {
 
     constructor () {
         this.__CMS = new StoryblokClient({ accessToken: process.env.STORYBLOK_AUTH_TOKEN })
-        this.__timestamp = Math.floor( Math.random() * 1000 )
+        this.__contentVersion = Math.floor( Math.random() * 1000 )
     }
 
     getArticleById (articleId) {
         return this.__CMS.get(`cdn/stories/${articleId}`, {
-            timestamp : this.__timestamp
+            contentVersion : this.__contentVersion
         }).then( res => res.data.story )
     }
     
-    $updateTimestamp () {
-        this.__timestamp = Math.floor( Math.random() * 1000 )
+    $updateContentVersion () {
+        this.__contentVersion = Math.floor( Math.random() * 1000 )
     }
 
 }

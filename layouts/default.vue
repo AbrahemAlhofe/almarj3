@@ -22,8 +22,8 @@ export default {
     const message = this.$t('notify.there is a new content')
     const actionButtonText = this.$t('notify.reload')
 
-    this.$socket.on('setTimestamp', (timestamp) => {
-      this.$store.commit('content/setTimestamp', timestamp)
+    this.$socket.on('setContentVersion', (contentVersion) => {
+      this.$store.commit('content/setContentVersion', contentVersion)
     })
 
     this.$socket.on('published', () => {
