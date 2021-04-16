@@ -32,39 +32,41 @@ export const mutations = {
 
 export const actions = {
 
+  fetchContentList (context, options = {}) {
+    return this.$storyapi.get('cdn/links', options)
+      .then(({ data: { links } }) => Object.values(links))
+      .then((links) => {
+        const books = links.filter(link => link.is_folder).map(book => ({ title: book.name, links: [], id: book.id }))
+        const articles = links.filter(link => !link.is_folder)
+
+        books.map((book) => {
+          book.links = articles.filter(article => article.parent_id === book.id)
+          return book
+        })
+
+        return books
+      })
+  },
+
+  fetchOne (context, { book, slug, ...options }) {
+    return this.$storyapi.get(`cdn/stories/${book}/${slug}`, {
+      ...options,
+      contentVersion: context.contentVersion
+    }).then(response => response.data.story)
+  },
+
   async getContentList (context, options = {}) {
     const isContentListCashed = context.state.contentList.length !== 0
-
     if (isContentListCashed) {
       return context.state.contentList
     } else {
-      const links = await context.dispatch('getLinks')
-      const books = links.filter(link => link.is_folder).map(book => ({ title: book.name, links: [], id: book.id }))
-      const articles = links.filter(link => !link.is_folder)
-
-      books.map((book) => {
-        book.links = articles.filter(article => article.parent_id === book.id)
-        return book
-      })
-
-      context.commit('cashContentList', books)
-
-      return books
+      const contentList = await context.dispatch('fetchContentList')
+      context.commit('cashContentList', contentList)
+      return contentList
     }
   },
 
-  getLinks (context, options = {}) {
-    return this.$storyapi.get('cdn/links', options).then(({ data: { links } }) => Object.values(links))
-  },
-
-  getAll (context, options = {}) {
-    return this.$storyapi.getAll('cdn/stories', {
-      ...options,
-      contentVersion: context.contentVersion
-    })
-  },
-
-  getOne (context, { book, slug, ...options }) {
+  async getOne (context, { book, slug }) {
     const cashedArticles = context.state.cashedArticles
     const articleFullSlug = `${book}/${slug}`
     const cashedArticleIndex = cashedArticles.findIndex(article => article.full_slug === articleFullSlug)
@@ -73,15 +75,11 @@ export const actions = {
     if (isArticleCashedBefore) {
       const article = cashedArticles[cashedArticleIndex]
       return article
-    }
-
-    return this.$storyapi.get(`cdn/stories/${book}/${slug}`, {
-      ...options,
-      contentVersion: context.contentVersion
-    }).then(response => response.data.story).then((article) => {
+    } else {
+      const article = await context.dispatch('fetchOne', { book, slug })
       context.commit('cashArticles', [article])
       return article
-    })
+    }
   },
 
   search (context, query) {
