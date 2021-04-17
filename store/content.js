@@ -33,18 +33,25 @@ export const mutations = {
 export const actions = {
 
   fetchContentList (context, options = {}) {
-    return this.$storyapi.get('cdn/links', options)
+    return this.$storyapi.get('cdn/links', {
+      ...options,
+      contentVersion: context.contentVersion
+    })
       .then(({ data: { links } }) => Object.values(links))
       .then((links) => {
-        const books = links.filter(link => link.is_folder).map(book => ({ title: book.name, links: [], id: book.id }))
-        const articles = links.filter(link => !link.is_folder)
+        const entries = links.filter(link => link.parent_id === 0)
 
-        books.map((book) => {
-          book.links = articles.filter(article => article.parent_id === book.id)
-          return book
+        entries.map((link) => {
+          if (link.is_folder) {
+            const sublinks = links.filter(sublink => sublink.parent_id === link.id)
+            link.sublinks = sublinks
+            return link
+          } else {
+            return link
+          }
         })
 
-        return books
+        return entries
       })
   },
 

@@ -13,7 +13,7 @@ export default {
     const book = params.book
     const slug = params.slug
 
-    if (!book) { return redirect(`/${currentLocale}/docs/intro/what-is-political`) }
+    if (!book) { return redirect(`/${currentLocale}/docs/intro`) }
 
     const article = await store.dispatch('content/getOne', { book, slug })
 

@@ -1,8 +1,8 @@
 <template lang="pug">
   .contentList
-    template( v-for='tap of contentList' )
-      TheContentListTap( :title='tap.title' :links='tap.links' )
-
+    template( v-for='link of contentList' )
+      TheContentListTap( v-if='link.is_folder' :title='link.name' :links='link.sublinks' )
+      NuxtLink.contentList__link( v-else :to='localePath(`/docs/${link.slug}`)' ) {{ link.name }}
 </template>
 <script>
 export default {
@@ -21,6 +21,16 @@ export default {
   display: none;
 
   @media (min-width: 768px) { display: block }
+
+  &__link {
+
+      padding-block: 1em;
+      padding-inline: 2em;
+      display: block;
+      color: rgb( var(--black) );
+      text-decoration: none;
+
+  }
 
 }
 </style>
