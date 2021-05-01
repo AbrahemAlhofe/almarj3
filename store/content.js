@@ -55,8 +55,8 @@ export const actions = {
       })
   },
 
-  fetchOne (context, { book, slug, ...options }) {
-    return this.$storyapi.get(`cdn/stories/${book}/${slug}`, {
+  fetchOne (context, { path, ...options }) {
+    return this.$storyapi.get(`cdn/stories${path}`, {
       ...options,
       contentVersion: context.contentVersion
     }).then(response => response.data.story)
@@ -73,9 +73,9 @@ export const actions = {
     }
   },
 
-  async getOne (context, { book, slug }) {
+  async getOne (context, { path }) {
     const cashedArticles = context.state.cashedArticles
-    const articleFullSlug = `${book}/${slug}`
+    const articleFullSlug = path.slice(1)
     const cashedArticleIndex = cashedArticles.findIndex(article => article.full_slug === articleFullSlug)
     const isArticleCashedBefore = cashedArticleIndex !== -1
 
@@ -83,7 +83,7 @@ export const actions = {
       const article = cashedArticles[cashedArticleIndex]
       return article
     } else {
-      const article = await context.dispatch('fetchOne', { book, slug })
+      const article = await context.dispatch('fetchOne', { path })
       context.commit('cashArticles', [article])
       return article
     }
