@@ -6,7 +6,9 @@
 <template lang="pug">
   .referencePage
       TheContentList( :content-list='contentList' )
-      article.referencePage__article: TheArticleContent( :document='article.content.body' )
+      .referencePage__body
+        article.referencePage__article: TheArticleContent( :document='article.content.body' )
+        ThePrevNextBox.referencePage__prevNextBox( :next-link='currentLink.next_link' :prev-link='currentLink.prev_link' )
 </template>
 <script>
 export default {
@@ -21,6 +23,16 @@ export default {
     const article = await store.dispatch('content/getOne', { path })
 
     return { contentList, article }
+  },
+  computed: {
+
+    currentLink () {
+      const routerPath = this.$router.currentRoute.params.pathMatch
+      const currentLinkIndex = this.$store.state.content.links.findIndex(link => link.slug === routerPath)
+      const currentLink = this.$store.state.content.links[currentLinkIndex]
+      return currentLink
+    }
+
   },
   head () {
     return {
