@@ -1,3 +1,9 @@
+console.log( process.cwd() )
+
+const ContentUnit = require('./server/units/content.unit');
+
+const Content = ContentUnit();
+
 module.exports = {
   telemetry: false,
 
@@ -62,6 +68,20 @@ module.exports = {
       defaultLocale : 'ar',
       vueI18nLoader: true
     }],
+    // https://github.com/nuxt-community/sitemap-module#readme
+    ['@nuxtjs/sitemap', {
+      hostname: process.env.BASE_URL,
+      i18n: true,
+      async routes () {
+        const articles = await Content.getArticles()
+        return articles.map( article => ({
+          url: `/docs/${article.full_slug}`,
+          changefreq: 'daily',
+          priority: 0.7,
+          lastmod: article.published_at
+        }))
+      }
+    }]
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)

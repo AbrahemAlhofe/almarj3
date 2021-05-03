@@ -7,6 +7,13 @@ class Content {
         this.__contentVersion = Math.floor( Math.random() * 1000 )
     }
 
+    getArticles (options={}) {
+        return this.__CMS.get('cdn/stories/', {
+            ...options,
+            contentVersion: this.__contentVersion
+        }).then(({ data: { stories } }) => stories)
+    }
+
     getArticleById (articleId) {
         return this.__CMS.get(`cdn/stories/${articleId}`, {
             contentVersion : this.__contentVersion
