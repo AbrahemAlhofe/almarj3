@@ -8,12 +8,12 @@
     .menu
         v-logo.menu__logo( :is-full='true' )
         ul.menu__list
-          li.tap
-            .tap__icon: BookIcon
-            nuxt-link.tap__link( no-prefetch :to="localePath('/docs')" exactActiveClass='--exact-active' ) {{ $t('taps.reference') }}
-          li.tap
-            .tap__icon: PeopleIcon
-            nuxt-link.tap__link( no-prefetch :to="localePath('/who-we-are')" exactActiveClass='--exact-active' ) {{ $t('taps.who_we_are') }}
+          nuxt-link.tap( data-pagename='docs' :to="localePath('/docs/intro')" exactActiveClass='--exact-active' )
+              .tap__icon: BookIcon
+              .tap__name {{ $t('taps.reference') }}
+          nuxt-link.tap( data-pagename='who-we-are' :to="localePath('/who-we-are')" exactActiveClass='--exact-active' )
+              .tap__icon: PeopleIcon
+              .tap__name {{ $t('taps.who_we_are') }}
 
         .menu__buttons
           .menu__searchButton( @click="$store.commit('openSearchWindow')" ): SearchIcon
@@ -149,46 +149,43 @@ export default {
   border-radius: 0.3em;
 
   color: rgb( var(--black) );
+  text-decoration: none;
   text-align: center;
 
   list-style-type: none;
 
   cursor: pointer;
 
-  &:hover {
+  transition: .3s ease-in-out;
 
-    .tap__link {
-      color: rgb( var(--blue-100) )
-    }
+  &.--exact-active {
+
+    background-color: rgb( var(--blue-100) );
+    color: rgb( var(--white) ) !important;
+
+    .tap__name { color: rgb( var(--white) ) !important }
 
     .tap__icon {
-      fill: rgb( var(--blue-100) )
+
+      svg { fill: rgb( var(--white) ) }
+
     }
+
+  }
+
+  &:hover {
+
+    .tap__name { color: rgb( var(--blue-100) ) }
+
+    .tap__icon { fill: rgb( var(--blue-100) ) }
 
   }
 
   &__icon {
 
     width: 1.8em;
-    display: inline-block;
+    display: flex;
     transition: .5s ease-in-out;
-
-  }
-
-  &__link {
-
-    border-radius: 0.4em;
-
-    color: rgb( var(--black) );
-    text-decoration: none;
-    font-size: 1.2em;
-
-    transition: .3s ease-in-out;
-
-    &.--exact-active {
-        background-color: rgb( var(--blue-100) );
-        color: rgb( var(--white) ) !important;
-    }
 
   }
 
