@@ -2,7 +2,7 @@
     ar:
       taps:
           reference: المرجع
-          who_we_are: من نحن
+          who-we-are: من نحن
 </i18n>
 <template lang="pug">
     v-overlay( :is-overlay-open='$store.state.isSidebarOpen' )
@@ -21,12 +21,12 @@
                     .sidebar__header
                         .sidebar__closeButton( @click='closeSlot' ): ArrowIcon
                     .sidebar__linksList
-                        nuxt-link.sidebar__tap( no-prefetch :to="localePath('/docs')" exactActiveClass='--exact-active' )
+                        nuxt-link.sidebar__tap( data-pagename='docs' :to="localePath('/docs/intro')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: BookIcon
                             .sidebar__tapText {{ $t('taps.reference') }}
-                        nuxt-link.sidebar__tap( no-prefetch :to="localePath('/who_we_are')" exactActiveClass='--exact-active' )
+                        nuxt-link.sidebar__tap( data-pagename='who-we-are' :to="localePath('/who-we-are')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: PeopleIcon
-                            .sidebar__tapText {{ $t('taps.who_we_are') }}
+                            .sidebar__tapText {{ $t('taps.who-we-are') }}
                     .sidebar__contentList
                         template( v-if='$store.state.content.contentList.length !== 0' )
                             hr
@@ -132,6 +132,7 @@ export default {
 
         .sidebar__tapIcon {
 
+            display: flex;
             width: 1.3em;
             margin-inline-end: 0.3em;
 
