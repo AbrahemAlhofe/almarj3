@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       currentSlideIndex: 0,
-      autoMove: true,
+      autoMove: false,
       autoMoveInterval: null
     }
   },
@@ -56,15 +56,16 @@ export default {
     }
   },
   watch: {
-    autoMove: {
-      handler (isAutoMove) {
-        if (isAutoMove) {
-          this.autoMoveInterval = setInterval(() => { this.nextSlide() }, 4000)
-        } else {
-          clearInterval(this.autoMoveInterval)
-        }
-      },
-      immediate: true
+    autoMove (isAutoMove) {
+      if (isAutoMove) {
+        this.autoMoveInterval = setInterval(() => { this.nextSlide() }, 5000)
+      } else {
+        clearInterval(this.autoMoveInterval)
+      }
+    },
+    currentSlideIndex () {
+      this.autoMove = false
+      setTimeout(() => { this.autoMove = true }, 10 * 1000)
     }
   },
   mounted () {
@@ -72,6 +73,8 @@ export default {
       if (direction === 'left') { this.prevSlide() }
       if (direction === 'right') { this.nextSlide() }
     })
+
+    this.autoMove = true
   },
   methods: {
     showSlide (slideIndex) {

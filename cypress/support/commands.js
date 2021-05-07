@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('swipe', { prevSubject: 'element' }, (target, direction) => {
+
+    
+    if ( direction === 'right' ) {
+        
+        target.trigger('mousedown', { which: 1, clientX: 0, clientY: 0 })
+        target.trigger('mousemove', { clientX: 100, clientY: 0 })
+        
+    }
+    
+    if ( direction === 'left' ) {
+
+        target.trigger('mousedown', { which: 1, clientX: 100, clientY: 0 })
+        target.trigger('mousemove', { clientX: 0, clientY: 0 })
+        
+    }
+    
+    target.trigger('mouseup')
+
+})
