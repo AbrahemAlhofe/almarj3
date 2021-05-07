@@ -51,6 +51,8 @@ module.exports = {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    // Axios module configuration (https://go.nuxtjs.dev/config-axios)
+    '@nuxtjs/axios',
     // https://github.com/storyblok/storyblok-nuxt
     ['storyblok-nuxt', {
       accessToken: process.env.STORYBLOK_AUTH_TOKEN
@@ -84,8 +86,9 @@ module.exports = {
     }]
   ],
 
-  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios : {
+    baseURL: process.env.BASE_URL
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

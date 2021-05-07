@@ -15,7 +15,7 @@
               .searchWindow__loader( v-if='isLoading' ) {{ $t('loading') }}
               template( v-else )
                 NuxtLink.hit( v-for='hit of hits' :key='hit.id' :to='localePath(`/docs/${hit.full_slug}`)' )
-                  .hit__path {{ hit.content.book }} > {{ hit.name }}
+                  .hit__path {{ hit.name }}
                   .hit__brief {{ hit.content.description }}
 </template>
 <script>
@@ -173,42 +173,50 @@ export default {
 
 }
 
-.searchWindow .searchWindow__hitsList .hit {
+.searchWindow .searchWindow__hitsList {
 
-  display: block;
+  overflow-y: scroll;
+  max-height: 50vh;
 
-  border: 1px solid rgb(var(--gray-300));
-  border-radius: 5px;
-  margin-top: 1em;
-  padding: 0.5em;
+  .hit {
 
-  text-decoration: none;
+    display: block;
 
-  cursor: pointer;
+    border: 1px solid rgb(var(--gray-300));
+    border-radius: 5px;
+    margin-top: 1em;
+    padding: 0.5em;
 
-  &__path {
+    text-decoration: none;
 
-    padding: 0.1em;
+    cursor: pointer;
 
-    font-size: 1.2em;
-    font-weight: 600;
-    color: rgb( var(--blue-100) );
+    &__path {
 
-  }
+      padding: 0.1em;
 
-  &__brief {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: rgb( var(--blue-100) );
 
-    color: rgb( var(--gray-500) );
-    font-size: 0.9em;
-    padding: 0.2em;
+    }
 
-  }
+    &__brief {
 
-  &:hover {
+      color: rgb( var(--gray-500) );
+      font-size: 0.9em;
+      padding: 0.2em;
 
-    background-color: rgb( var(--gray-100) );
+    }
+
+    &:hover {
+
+      background-color: rgb( var(--gray-100) );
+
+    }
 
   }
 
 }
+
 </style>

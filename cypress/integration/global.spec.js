@@ -1,3 +1,4 @@
+import SearchWindowModel from '../models/search-window.model';
 import SidebarModel from '../models/sidebar.model';
 import MenuModel from '../models/menu.model';
 
@@ -78,6 +79,72 @@ describe('Test the sidebar', () => {
         sidebar.navigateTo('who-we-are')
 
         cy.location('pathname').should('contain', '/who-we-are')
+
+    })
+
+})
+
+describe('The search window', () => {
+    
+    const searchWindow = new SearchWindowModel();
+
+    beforeEach(() => {
+
+        cy.visit('/')
+
+    })
+
+
+    it('Open the search window', () => {
+
+        searchWindow.open()
+
+        searchWindow.$el.should('be.visible')
+
+    })  
+
+
+    it('Close the search window', () => {
+
+        searchWindow.open()
+
+        searchWindow.close()
+
+        searchWindow.$el.should('not.be.exist')
+
+    })
+
+    it.only('Search', async () => {
+
+        const hits = await cy.fixture('articles.json')
+
+        cy.intercept({ method: 'GET', url: '/search' }, async (req) => {
+            req.reply({
+                fixture: 'articles',
+                delay: 1000,
+            })
+        })
+        
+        searchWindow.open()
+
+        searchWindow.input('test query')
+
+        searchWindow.search()
+
+        searchWindow.$loader.should('be.exist')
+
+        cy.wait(1000)
+
+        searchWindow.$loader.should('not.be.exist')
+
+        const hitIndex = Math.min( Math.floor( Math.random() * 10 ), 3 )
+        const hit = hits[ hitIndex ]
+
+        searchWindow.$hits.eq(hitIndex).find('.hit__path').should('have.text', hit.name)
+
+        searchWindow.$hits.eq(hitIndex).find('.hit__brief').should('have.text', hit.content.description)
+
+        searchWindow.$hits.eq(hitIndex).should('have.attr', 'href').and('contain', `/docs/${hit.full_slug}`)
 
     })
 

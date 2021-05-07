@@ -30,13 +30,17 @@ async function start() {
         socketIo = socket
         socket.emit('setContentVersion', content.__contentVersion)
         
-        socket.on('search', (query, resolve) => {
-            searchEngine.search(query).then( resolve )
-        })
-
     })
 
     app.use( express.json() )
+
+    app.get('/search', async (req, res, next) => {
+        
+        const hints = await searchEngine.search(req.query['q'])
+
+        res.json(hints)
+
+    })
 
     app.post('/published', async (req, res, next) => {
 
