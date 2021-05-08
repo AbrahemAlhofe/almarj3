@@ -17,7 +17,10 @@ class Content {
     getArticleById (articleId) {
         return this.__CMS.get(`cdn/stories/${articleId}`, {
             contentVersion : this.__contentVersion
-        }).then( res => res.data.story )
+        }).then( res => {
+            console.log(res)
+            res.data.story
+        })
     }
     
     $updateContentVersion () {

@@ -1,0 +1,56 @@
+[
+
+    {
+
+        "name": "The article 1",
+        "full_slug": "the-book/the-article-1",
+        "content": {
+            "description": "The description of 'the article 1'"
+        },
+        "parent_id": 4,
+        "id": 0
+
+    },
+    {
+
+        "name": "The article 2",
+        "full_slug": "the-book/the-article-2",
+        "content": {
+            "description": "The description of 'the article 2'"
+        },
+        "parent_id": 4,
+        "id": 1
+
+    },
+    {
+
+        "name": "The article 3",
+        "full_slug": "the-book/the-article-3",
+        "content": {
+            "description": "The description of 'the article 3'"
+        },
+        "parent_id": 4,
+        "id": 2
+
+    },
+    {
+
+        "name": "The article 4",
+        "full_slug": "the-book/the-article-4",
+        "content": {
+            "description": "The description of 'the article 4'"
+        },
+        "parent_id": 4,
+        "id": 3
+
+    },
+    {
+ 
+        "name": "The Book",
+        "full_slug": "the-book",
+        "parent_id": 0,
+        "id": 4
+ 
+    }
+
+]
