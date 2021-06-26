@@ -82,7 +82,10 @@ export const actions = {
     return this.$storyapi.get(`cdn/stories${path}`, {
       ...options,
       contentVersion: context.contentVersion
-    }).then(response => response.data.story)
+    }).then((response) => {
+      console.log(response)
+      return response.data.story
+    }).catch(err => console.log({ err }))
   },
 
   async getContentList (context, options = {}) {
