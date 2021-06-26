@@ -71,9 +71,32 @@ export const actions = {
         }, [])
 
         return flatSortLinks(bookedLinks)
-      })
-      .then((links) => {
-        context.commit('cashLinks', links)
+      }).then((links) => {
+        const contentList = []
+
+        links.map((currentLink, currentLinkIndex) => {
+          if (!currentLink.is_folder) {
+            const prevLinkIndex = links.findIndex((link, linkIndex) => !link.is_folder && linkIndex < currentLinkIndex)
+            const previousLink = links[prevLinkIndex]
+
+            const nextLinkIndex = links.findIndex((link, linkIndex) => !link.is_folder && linkIndex > currentLinkIndex)
+            const nextLink = links[nextLinkIndex]
+
+            currentLink.previous_link = previousLink
+            currentLink.next_link = nextLink
+          }
+
+          return currentLink
+        })
+
+        links.forEach((link) => {
+          if (link.parent_id === 0 || link.is_folder) {
+            const sublinks = links.filter(sublink => sublink.parent_id === link.id)
+            link.sublinks = sublinks
+            contentList.push(link)
+          }
+        })
+
         return links
       })
   },
@@ -83,7 +106,6 @@ export const actions = {
       ...options,
       contentVersion: context.contentVersion
     }).then((response) => {
-      console.log(response)
       return response.data.story
     }).catch(err => console.log({ err }))
   },
@@ -93,33 +115,7 @@ export const actions = {
 
     if (isContentListCashed) { return context.state.contentList }
 
-    /** @type Array<any> */
-    const links = await context.dispatch('fetchLinks')
-    const contentList = []
-
-    links.map((currentLink, currentLinkIndex) => {
-      if (!currentLink.is_folder) {
-        const prevLinkIndex = links.findIndex((link, linkIndex) => !link.is_folder && linkIndex < currentLinkIndex)
-        const previousLink = links[prevLinkIndex]
-
-        const nextLinkIndex = links.findIndex((link, linkIndex) => !link.is_folder && linkIndex > currentLinkIndex)
-        const nextLink = links[nextLinkIndex]
-
-        currentLink.previous_link = previousLink
-        currentLink.next_link = nextLink
-      }
-
-      return currentLink
-    })
-
-    links.forEach((link) => {
-      if (link.parent_id === 0 || link.is_folder) {
-        const sublinks = links.filter(sublink => sublink.parent_id === link.id)
-        link.sublinks = sublinks
-        contentList.push(link)
-      }
-    })
-
+    const contentList = await context.dispatch('fetchLinks')
     context.commit('cashContentList', contentList)
     return contentList
   },
