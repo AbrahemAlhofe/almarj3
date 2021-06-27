@@ -8,7 +8,6 @@
 </i18n>
 <template lang='pug'>
   .defaultLayout
-    ClientOnly: TheNotify( ref='notify' )
     ClientOnly: TheSidebar
     ClientOnly: TheSearchWindow
     TheMenu.defaultLayout__menu
@@ -17,19 +16,6 @@
 </template>
 <script>
 export default {
-
-  mounted () {
-    const message = this.$t('notify.there is a new content')
-    const actionButtonText = this.$t('notify.reload')
-
-    this.$socket.on('setContentVersion', (contentVersion) => {
-      this.$store.commit('content/setContentVersion', contentVersion)
-    })
-
-    this.$socket.on('published', () => {
-      this.$refs.notify.notice({ message, actionButtonText }, () => location.reload())
-    })
-  },
 
   head () {
     return {

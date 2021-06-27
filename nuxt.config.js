@@ -1,8 +1,6 @@
-console.log( process.cwd() )
+const StoryblokClient = require('storyblok-js-client');
 
-const ContentUnit = require('./server/units/content.unit');
-
-const Content = ContentUnit();
+const storyblok = new StoryblokClient({ accessToken: process.env.STORYBLOK_AUTH_TOKEN })
 
 module.exports = {
   telemetry: false,
@@ -33,7 +31,7 @@ module.exports = {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '@/plugins/i18n.js',
-    '@/plugins/socket.js'
+    '@/plugins/algolia.plugin.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -75,7 +73,7 @@ module.exports = {
       hostname: process.env.BASE_URL,
       i18n: true,
       async routes () {
-        const articles = await Content.getArticles()
+        const articles = await await storyblok.get(`cdn/stories`)
         return articles.map( article => ({
           url: `/docs/${article.full_slug}`,
           changefreq: 'daily',
@@ -87,7 +85,17 @@ module.exports = {
   ],
 
   axios : {
+
     baseURL: process.env.BASE_URL
+  
+  },
+
+  publicRuntimeConfig : {
+
+    ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+
+    ALGOLIA_ADMIN_API_KEY: process.env.ALGOLIA_ADMIN_API_KEY
+
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -99,5 +107,12 @@ module.exports = {
 
   reference: {
     homePage : 'get-started/intro'
-  }
+  },
+
+  serverMiddleware: [
+
+    { path: '/hooks/article-published', handler: '~/hooks/article-published.hook' }
+
+  ]
+
 }

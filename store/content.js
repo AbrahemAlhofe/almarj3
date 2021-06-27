@@ -14,7 +14,7 @@ function flatSortLinks (links) {
 
 export const state = () => ({
 
-  contentVersion: null,
+  contentVersion: Math.floor( Math.random() * 1000 ),
 
   cashedArticles: [],
 
@@ -25,10 +25,6 @@ export const state = () => ({
 })
 
 export const mutations = {
-
-  setContentVersion (state, newContentVersion) {
-    state.contentVersion = newContentVersion
-  },
 
   cashArticles (state, articles) {
     articles.forEach((article, articleIndex) => {
@@ -137,7 +133,9 @@ export const actions = {
   },
 
   search (context, query) {
-    return this.$axios.$get('/search', { query: { q: query } })
+
+    return this.$algolia.search(query).then(res => res.hits)
+
   }
 
 }
