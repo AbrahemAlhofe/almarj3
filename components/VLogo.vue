@@ -1,11 +1,7 @@
-<i18n lang='yaml'>
-  ar:
-    logo__name: "برلمان طلائع القاهرة"
-</i18n>
 <template lang='pug'>
   .logo( :class='{ "--full" : isFull }' )
     Logo.logo__icon
-    .logo__name( v-if='isFull' ) {{ $t('logo__name') }}
+    .logo__name( v-if='isFull' ) برلمان طلائع القاهرة
 </template>
 <script>
 import Logo from '@/assets/images/logo.svg?inline'

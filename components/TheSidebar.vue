@@ -1,9 +1,3 @@
-<i18n lang='yaml'>
-    ar:
-      taps:
-          reference: المرجع
-          who-we-are: من نحن
-</i18n>
 <template lang="pug">
     v-overlay( :is-overlay-open='$store.state.isSidebarOpen' )
         template( #default='{ isSlotOpen, closeSlot }' )
@@ -23,10 +17,10 @@
                     .sidebar__linksList
                         nuxt-link.sidebar__tap( data-pagename='docs' :to="localePath('/docs/intro')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: BookIcon
-                            .sidebar__tapText {{ $t('taps.reference') }}
+                            .sidebar__tapText المرجع
                         nuxt-link.sidebar__tap( data-pagename='who-we-are' :to="localePath('/who-we-are')" exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: PeopleIcon
-                            .sidebar__tapText {{ $t('taps.who-we-are') }}
+                            .sidebar__tapText من نحن
                     .sidebar__contentList
                         template( v-if='$store.state.content.contentList.length !== 0' )
                             hr

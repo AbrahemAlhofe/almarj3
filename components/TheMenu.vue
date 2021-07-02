@@ -1,19 +1,14 @@
-<i18n lang='yaml'>
-    ar:
-      taps:
-          reference: المرجع
-          who_we_are: من نحن
-</i18n>
+
 <template lang="pug">
     .menu
         v-logo.menu__logo( :is-full='true' )
         ul.menu__list
-          nuxt-link.tap( data-pagename='docs' :to="localePath('/docs/intro')" exactActiveClass='--exact-active' )
+          nuxt-link.tap( data-pagename='docs' to="/docs/intro" exactActiveClass='--exact-active' )
               .tap__icon: BookIcon
-              .tap__name {{ $t('taps.reference') }}
-          nuxt-link.tap( data-pagename='who-we-are' :to="localePath('/who-we-are')" exactActiveClass='--exact-active' )
+              .tap__name المرجع
+          nuxt-link.tap( data-pagename='who-we-are' to="/who-we-are" exactActiveClass='--exact-active' )
               .tap__icon: PeopleIcon
-              .tap__name {{ $t('taps.who_we_are') }}
+              .tap__name من نحن
 
         .menu__buttons
           .menu__searchButton( @click="$store.commit('openSearchWindow')" ): SearchIcon

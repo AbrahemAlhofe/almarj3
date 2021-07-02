@@ -22,7 +22,7 @@ describe('Test article', () => {
 
         })
 
-        cy.visit(`/ar/docs/the-book/the-article-1`)
+        cy.visit(`/docs/the-book/the-article-1`)
 
         article.$body.should('have.text', currentArticle.content.body)
 

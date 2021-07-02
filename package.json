@@ -24,7 +24,6 @@
     "dotenv": "^10.0.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.14.6",
-    "nuxt-i18n": "^6.18.0",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",

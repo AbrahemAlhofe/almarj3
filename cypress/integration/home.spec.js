@@ -6,7 +6,7 @@ describe('Test slider', () => {
 
     beforeEach(() => {
 
-        cy.visit('/ar')
+        cy.visit('/')
 
     })
 

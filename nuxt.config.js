@@ -7,6 +7,7 @@ module.exports = {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
+    htmlAttrs: { dir: 'rtl' },
     title: 'cairo-pioneers-reference',
     meta: [
       { charset: 'utf-8' },
@@ -30,7 +31,6 @@ module.exports = {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/i18n.js',
     '@/plugins/algolia.plugin.js'
   ],
 
@@ -57,17 +57,6 @@ module.exports = {
     }],
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://i18n.nuxtjs.org
-    ['nuxt-i18n', {
-      baseUrl : process.env.BASE_URL,
-      seo : true,
-      strategy : 'prefix',
-      locales : [
-        { code: 'ar', iso: 'ar-EG', dir: 'rtl', name : 'عربي' }
-      ],
-      defaultLocale : 'ar',
-      vueI18nLoader: true
-    }],
     // https://github.com/nuxt-community/sitemap-module#readme
     ['@nuxtjs/sitemap', {
       hostname: process.env.BASE_URL,

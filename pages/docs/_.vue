@@ -1,8 +1,3 @@
-<i18n lang='yaml'>
-  ar:
-    head:
-      title: مرجع برلمان طلائع القاهرة
-</i18n>
 <template lang="pug">
   .referencePage
       TheContentList( :content-list='contentList' )
@@ -53,7 +48,7 @@ export default {
         // Open Graph
         {
           property: 'og:title',
-          content: `${this.article.name} | ${this.$t('head.title')}`
+          content: `${this.article.name} | مرجع برلمان طلائع القاهرة`
         },
         {
           property: 'og:description',

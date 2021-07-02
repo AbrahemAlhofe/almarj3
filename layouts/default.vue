@@ -1,11 +1,3 @@
-<i18n lang='yaml'>
-  ar:
-    head:
-      title: مرجع برلمان طلائع القاهرة
-    notify:
-      there is a new content: هناك محتوي جديد
-      reload: أعد التحميل
-</i18n>
 <template lang='pug'>
   .defaultLayout
     ClientOnly: TheSidebar
@@ -20,7 +12,7 @@ export default {
   head () {
     return {
 
-      titleTemplate: `%s | ${this.$t('head.title')}`
+      titleTemplate: `%s | مرجع برلمان طلائع القاهرة`
 
     }
   }

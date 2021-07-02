@@ -8,7 +8,7 @@ describe('Test the menu', () => {
 
     beforeEach(() => {
         
-        cy.visit('/ar')
+        cy.visit('/')
         
     })
 
@@ -36,7 +36,7 @@ describe('Test the sidebar', () => {
 
     beforeEach(() => {
 
-        cy.visit('/ar')
+        cy.visit('/')
     
         cy.viewport(767, 1024)
 

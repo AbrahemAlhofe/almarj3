@@ -1,7 +1,3 @@
-<i18n lang='yaml'>
-  ar:
-    loading: جاري البحث
-</i18n>
 <template lang="pug">
     v-overlay( :is-overlay-open='$store.state.isSearchWindowOpen' )
       template( #default='{ isSlotOpen }')
@@ -12,7 +8,7 @@
               input.searchInput__input( ref='input' v-model='query' )
               .searchInput__clearButton: ClearIcon( v-if='query !== ""' @click='clear' )
             .searchWindow__hitsList
-              .searchWindow__loader( v-if='isLoading' ) {{ $t('loading') }}
+              .searchWindow__loader( v-if='isLoading' ) جاري البحث
               template( v-else )
                 NuxtLink.hit( v-for='hit of hits' :key='hit.id' :to='localePath(`/docs/${hit.full_slug}`)' )
                   .hit__path {{ hit.name }}
