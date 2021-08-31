@@ -4,6 +4,15 @@
 </template>
 <script>
 export default {
+
+  asyncData ({ redirect }) {
+
+    redirect(`/docs`)
+
+    return {}
+
+  },
+
   head () {
     return {
       title: 'الصفحة الرئيسية',
