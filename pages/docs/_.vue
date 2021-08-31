@@ -7,15 +7,10 @@
 </template>
 <script>
 export default {
-  async asyncData ({ store, app, redirect, route }) {
-    const path = `/${route.params.pathMatch}`
-    const currentLocale = app.i18n.locale
-
-    if (path === '/') { return redirect(`/${currentLocale}/docs/intro`) }
-
+  async asyncData ({ store, route }) {
     const contentList = await store.dispatch('content/getContentList')
 
-    const article = await store.dispatch('content/getOne', { path })
+    const article = await store.dispatch('content/getOne', { path: `/${route.params.pathMatch}` })
 
     return { contentList, article }
   },
