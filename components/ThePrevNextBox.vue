@@ -1,9 +1,9 @@
 <template lang="pug">
     .nextPrevBox
-        NuxtLink( v-if='nextLink' :to='localePath(`/docs/${nextLink.slug}`)' ).nextPrevBox__nextLink
+        NuxtLink( v-if='nextLink' :to='`/docs/${nextLink.slug}`' ).nextPrevBox__nextLink
             RightChevronIcon
             span {{ nextLink.name }}
-        NuxtLink( v-if='prevLink' :to='localePath(`/docs/${prevLink.slug}`)' ).nextPrevBox__previousLink
+        NuxtLink( v-if='prevLink' :to='`/docs/${prevLink.slug}`' ).nextPrevBox__previousLink
             span {{ prevLink.name }}
             LeftChevronIcon
 </template>

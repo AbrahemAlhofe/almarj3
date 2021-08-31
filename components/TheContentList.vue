@@ -2,7 +2,7 @@
   .contentList
     template( v-for='link of contentList' )
       TheContentListTap( v-if='link.is_folder' :title='link.name' :links='link.sublinks' )
-      NuxtLink.contentList__link( v-else :to='localePath(`/docs/${link.slug}`)' ) {{ link.name }}
+      NuxtLink.contentList__link( v-else :to='`/docs/${link.slug}`' ) {{ link.name }}
 </template>
 <script>
 export default {
