@@ -15,10 +15,10 @@
                     .sidebar__header
                         .sidebar__closeButton( @click='closeSlot' ): ArrowIcon
                     .sidebar__linksList
-                        nuxt-link.sidebar__tap( data-pagename='docs' :to="localePath('/docs/intro')" exactActiveClass='--exact-active' )
+                        nuxt-link.sidebar__tap( data-pagename='docs' :to='"/docs/intro"' exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: BookIcon
                             .sidebar__tapText المرجع
-                        nuxt-link.sidebar__tap( data-pagename='who-we-are' :to="localePath('/who-we-are')" exactActiveClass='--exact-active' )
+                        nuxt-link.sidebar__tap( data-pagename='who-we-are' :to='"/who-we-are"' exactActiveClass='--exact-active' )
                             .sidebar__tapIcon: PeopleIcon
                             .sidebar__tapText من نحن
                     .sidebar__contentList
