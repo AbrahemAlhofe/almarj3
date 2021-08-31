@@ -1,17 +1,17 @@
 <template lang="pug">
   .referencePage
-      TheContentList( :content-list='contentList' )
+      TheContentList( :content-list='links' )
       .referencePage__body
         article.referencePage__article: TheArticleContent( :document='article.content.body' )
 </template>
 <script>
 export default {
   async asyncData ({ store, route }) {
-    const contentList = await store.dispatch('content/getContentList')
+    const links = await store.dispatch('links/fetchAll')
 
     const article = await store.dispatch('content/getOne', { path: `/${route.params.pathMatch}` })
 
-    return { contentList, article }
+    return { links, article }
   },
   head () {
     return {

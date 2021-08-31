@@ -1,7 +1,7 @@
 <template lang="pug">
   .contentList
     template( v-for='link of contentList' )
-      TheContentListTap( v-if='link.is_folder' :title='link.name' :links='link.sublinks' )
+      TheContentListTap( v-if="link.type == 'Chapter'" :title='link.name' :links='link.articles' )
       NuxtLink.contentList__link( v-else :to='`/docs/${link.slug}`' ) {{ link.name }}
 </template>
 <script>

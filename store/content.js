@@ -1,26 +1,8 @@
-function flatSortLinks (links) {
-  let sortedLinks = []
-
-  links.forEach((link) => {
-    if (link.is_folder) {
-      const linkWithoutSublinks = { ...link }
-      delete linkWithoutSublinks.sublinks
-      sortedLinks = sortedLinks.concat([linkWithoutSublinks, ...flatSortLinks(link.sublinks)])
-    } else { sortedLinks.push(link) }
-  })
-
-  return sortedLinks
-}
-
 export const state = () => ({
 
   contentVersion: Math.floor( Math.random() * 1000 ),
 
-  cashedArticles: [],
-
-  contentList: [],
-
-  links: []
+  cashedArticles: []
 
 })
 
@@ -36,66 +18,9 @@ export const mutations = {
     return articles
   },
 
-  cashContentList (state, contentList) {
-    state.contentList = contentList
-  },
-
-  cashLinks (state, links) {
-    state.links = links
-  }
-
 }
 
 export const actions = {
-
-  fetchLinks (context, options = {}) {
-    return this.$storyapi.get('cdn/links', {
-      ...options,
-      contentVersion: context.contentVersion
-    })
-      .then(({ data: { links } }) => Object.values(links))
-      .then((links) => {
-        const bookedLinks = links.reduce((bookedLinks, link) => {
-          if (link.parent_id === 0) {
-            if (link.is_folder) {
-              const sublinks = links.filter(sublink => sublink.parent_id === link.id)
-              link.sublinks = sublinks
-            }
-            bookedLinks.push(link)
-          }
-          return bookedLinks
-        }, [])
-
-        return flatSortLinks(bookedLinks)
-      }).then((links) => {
-        const contentList = []
-
-        links.map((currentLink, currentLinkIndex) => {
-          if (!currentLink.is_folder) {
-            const prevLinkIndex = links.findIndex((link, linkIndex) => !link.is_folder && linkIndex < currentLinkIndex)
-            const previousLink = links[prevLinkIndex]
-
-            const nextLinkIndex = links.findIndex((link, linkIndex) => !link.is_folder && linkIndex > currentLinkIndex)
-            const nextLink = links[nextLinkIndex]
-
-            currentLink.previous_link = previousLink
-            currentLink.next_link = nextLink
-          }
-
-          return currentLink
-        })
-
-        links.forEach((link) => {
-          if (link.parent_id === 0 || link.is_folder) {
-            const sublinks = links.filter(sublink => sublink.parent_id === link.id)
-            link.sublinks = sublinks
-            contentList.push(link)
-          }
-        })
-
-        return links
-      })
-  },
 
   fetchOne (context, { path, ...options }) {
     return this.$storyapi.get(`cdn/stories${path}`, {
@@ -104,16 +29,6 @@ export const actions = {
     }).then((response) => {
       return response.data.story
     }).catch(err => console.log({ err }))
-  },
-
-  async getContentList (context, options = {}) {
-    const isContentListCashed = context.state.contentList.length !== 0
-
-    if (isContentListCashed) { return context.state.contentList }
-
-    const contentList = await context.dispatch('fetchLinks')
-    context.commit('cashContentList', contentList)
-    return contentList
   },
 
   async getOne (context, { path }) {
