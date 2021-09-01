@@ -46,8 +46,6 @@ export const actions = {
 
       }))
 
-    console.log([...articles, ...chapters])
-
     return [...articles, ...chapters]
   }
 
