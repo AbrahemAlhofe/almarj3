@@ -1,6 +1,6 @@
 <template lang="pug">
   .referencePage
-      TheContentList( :content-list='links' )
+      TheContentList.page__aside( :content-list='links' )
       .referencePage__body
         article.referencePage__article: TheArticleContent( :document='article.content.body' )
 </template>
@@ -71,9 +71,24 @@ export default {
   min-height : 100vh;
   display: flex;
 
+  &__body {
+    flex-grow: 1;
+    width: 100%;
+  }
+
   &__content {
 
     flex-grow: 1
+
+  }
+
+  .page__aside {
+
+    width: 45em;
+
+    display: none;
+
+    @media (min-width: 768px) { display: block }
 
   }
 

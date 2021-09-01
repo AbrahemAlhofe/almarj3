@@ -18,9 +18,6 @@ export default {
 .contentList {
 
   margin: 1em;
-  display: none;
-
-  @media (min-width: 768px) { display: block }
 
   &__link {
 

@@ -32,7 +32,7 @@ export default {
 <style lang="scss">
 .contentListTap {
 
-    width: max-content;
+    width: 100%;
 
     cursor: pointer;
 

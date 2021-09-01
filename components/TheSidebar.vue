@@ -22,10 +22,9 @@
                             .sidebar__tapIcon: PeopleIcon
                             .sidebar__tapText من نحن
                     .sidebar__contentList
-                        template( v-if='$store.state.content.contentList.length !== 0' )
+                        template( v-if='links.length !== 0' )
                             hr
-                            template( v-for='tap of contentList' )
-                                TheContentListTap( :title='tap.title' :links='tap.links' )
+                            TheContentList( :content-list='links' )
 
 </template>
 <script>
@@ -48,6 +47,16 @@ const Icons = {
 export default {
   name: 'AppSidebar',
   components: { ...Icons, TheContentListTap },
+  data: vm => ({
+
+    links: []
+
+  }),
+  async mounted () {
+    const links = await this.$store.dispatch('links/fetchAll')
+
+    this.links = links
+  },
   methods: {
     close () {
       this.$store.commit('closeSidebar')
@@ -68,6 +77,10 @@ export default {
 
     background-color: rgb( var(--gray-100) );
 
+    overflow: scroll;
+
+    direction: ltr;
+
     &--transitionEnterActive,
     &--transitionLeaveActive { transition: all 0.4s ease-in-out }
     &--transitionEnter,
@@ -75,7 +88,6 @@ export default {
 
     &__header {
         width: 100%;
-        direction: ltr;
     }
 
     &__closeButton {
@@ -99,6 +111,18 @@ export default {
             fill: rgb( var(--gray-400) );
 
         }
+
+    }
+
+    &__linksList {
+
+        direction: rtl;
+
+    }
+
+    &__contentList {
+
+        direction: rtl;
 
     }
 
