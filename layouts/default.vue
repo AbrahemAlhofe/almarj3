@@ -1,5 +1,5 @@
 <template lang='pug'>
-  .defaultLayout
+  .defaultLayout( :class="{ '--dark-mode' : $store.state.PrefersColorMode === 'dark' }" )
     ClientOnly: TheSidebar
     ClientOnly: TheSearchWindow
     TheMenu.defaultLayout__menu

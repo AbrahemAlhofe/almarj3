@@ -1,4 +1,5 @@
 export const state = () => ({
+  PrefersColorMode: 'light',
   isSidebarOpen: false,
   isSearchWindowOpen: false
 })
@@ -17,6 +18,10 @@ export const mutations = {
   },
   closeSearchWindow: (state) => {
     state.isSearchWindowOpen = false
+  },
+
+  togglePrefersColorMode: (state) => {
+    state.PrefersColorMode = state.PrefersColorMode === 'light' ? 'dark' : 'light'
   }
 
 }

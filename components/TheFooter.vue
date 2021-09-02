@@ -1,6 +1,12 @@
 <template lang="pug">
     .footer
-        v-logo.footer__logo
+        button.button( @click="$store.commit('togglePrefersColorMode')" )
+            template( v-if='$store.state.PrefersColorMode === "dark"' )
+                span.button__icon: SunIcon
+                span.button__text الوضع النهاري
+            template( v-if='$store.state.PrefersColorMode === "light"' )
+                span.button__icon: MoonIcon
+                span.button__text الوضع الليلي
         .contactUs
             a.contactUs__facebook( :href='contacts.facebook' ): FacebookIcon
             a.contactUs__whatsapp( :href='contacts.whatsapp' ): WhatsappIcon
@@ -11,9 +17,11 @@
 import FacebookIcon from '@/assets/icons/facebook.svg?inline'
 import WhatsappIcon from '@/assets/icons/whatsapp.svg?inline'
 import EmailIcon from '@/assets/icons/email.svg?inline'
+import SunIcon from '@/assets/icons/sun.svg?inline'
+import MoonIcon from '@/assets/icons/moon.svg?inline'
 
 export default {
-  components: { FacebookIcon, WhatsappIcon, EmailIcon },
+  components: { FacebookIcon, WhatsappIcon, EmailIcon, SunIcon, MoonIcon },
   data () {
     return {
       contacts: {
@@ -50,13 +58,42 @@ export default {
 
     }
 
-    &__logo {
+    .button {
 
-        @media (min-width: 768px) {
+        width: 10em;
+        height: 3em;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+        background-color: var(--white);
+        border: none;
+        border-radius: 0.5em;
 
-            order: 1;
+        &__text {
+
+            color: var(--black);
+            font-weight: bold;
+            font-family: 'Cairo';
 
         }
+
+        &__icon {
+
+            height: fit-content;
+            display: flex;
+
+            svg {
+
+                fill: var(--black);
+                height: 100%;
+                width: 2em;
+
+            }
+
+        }
+
+        @media (min-width: 768px) { order: 1 }
 
     }
 
