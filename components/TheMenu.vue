@@ -48,7 +48,7 @@ export default {
   box-sizing: border-box;
   padding : 0.6em;
 
-  background-color: rgb( var(--white) );
+  background-color: var(--white);
 
   &__list {
 
@@ -83,7 +83,7 @@ export default {
     justify-content: center;
     align-items: center;
 
-    background-color: rgb( var(--gray-200) );
+    background-color: var(--gray-100);
 
     border-radius: 0.4em;
     margin-inline-start : 1em;
@@ -92,11 +92,11 @@ export default {
 
     cursor: pointer;
 
-    &:hover { background-color: rgb( var(--gray-300) ) }
+    &:hover { background-color: var(--gray-300) }
 
     svg {
 
-      stroke: rgb( var(--black) );
+      fill: var(--black);
       width: 1.3em;
 
     }
@@ -119,11 +119,11 @@ export default {
 
     cursor: pointer;
 
-    &:hover { background-color: rgb( var(--gray-100) ) }
+    &:hover { background-color: var(--gray-100) }
 
     svg {
 
-      fill: rgb( var(--black) );
+      stroke: var(--black);
       width: 1.5em;
 
     }
@@ -143,7 +143,7 @@ export default {
   padding: .3em;
   border-radius: 0.3em;
 
-  color: rgb( var(--black) );
+  color: unset;
   text-decoration: none;
   text-align: center;
 
@@ -155,14 +155,14 @@ export default {
 
   &.--exact-active {
 
-    background-color: rgb( var(--blue-100) );
-    color: rgb( var(--white) ) !important;
+    background-color: var( --blue-100 );
+    color: var(--white) !important;
 
-    .tap__name { color: rgb( var(--white) ) !important }
+    .tap__name { color: var(--white) !important }
 
     .tap__icon {
 
-      svg { fill: rgb( var(--white) ) }
+      svg { fill: var(--white) }
 
     }
 
@@ -170,9 +170,15 @@ export default {
 
   &:hover {
 
-    .tap__name { color: rgb( var(--blue-100) ) }
+    .tap__name { color: var( --blue-100 ) }
 
-    .tap__icon { fill: rgb( var(--blue-100) ) }
+    .tap__icon { fill: var( --blue-100 ) }
+
+  }
+
+  &__name {
+
+    color: var(--black);
 
   }
 
@@ -181,6 +187,7 @@ export default {
     width: 1.8em;
     display: flex;
     transition: .5s ease-in-out;
+    fill: var( --black )
 
   }
 

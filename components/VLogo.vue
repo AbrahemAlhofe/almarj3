@@ -34,7 +34,12 @@ export default {
 
   }
 
-  &__name { font-weight: bold }
+  &__name {
+
+    font-weight: bold;
+    color: var( --black );
+
+  }
 
   &.--full {
 

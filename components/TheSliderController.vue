@@ -70,7 +70,7 @@ export default {
 
         &.--active {
 
-            background-color: rgb( var(--blue-100) );
+            background-color: var( --blue-100 );
 
         }
 

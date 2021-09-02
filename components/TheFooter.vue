@@ -39,13 +39,13 @@ export default {
     box-sizing: border-box;
     padding: 1em;
 
-    background-color: rgb(var(--black));
+    background-color: var(--black);
 
     @media (min-width: 768px) { flex-direction: row }
 
     &__copyRight {
 
-        color: rgb( var(--white) );
+        color: var(--white);
         font-size: 0.8em;
 
     }
@@ -77,12 +77,12 @@ export default {
             justify-content: center;
             align-items: center;
 
-            background: rgb( var(--gray-500) );
+            background: var(--gray-500);
             cursor: pointer;
 
             svg {
                 width: 1.5em;
-                fill: rgb( var(--white) );
+                fill: var(--white);
             }
 
         }

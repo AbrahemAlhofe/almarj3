@@ -75,7 +75,7 @@ export default {
     height: 100%;
     padding: 0.3em;
 
-    background-color: rgb( var(--gray-100) );
+    background-color: var(--gray-100);
 
     overflow: scroll;
 
@@ -103,12 +103,12 @@ export default {
 
         cursor: pointer;
 
-        &:hover { background-color: rgb( var(--gray-200) ) }
+        &:hover { background-color: var(--gray-200) }
 
         svg {
 
             width: 1.7em;
-            fill: rgb( var(--gray-400) );
+            fill: var(--gray-400);
 
         }
 
@@ -131,7 +131,7 @@ export default {
         width : 100%;
         height: 3em;
 
-        color: rgb( var(--black) );
+        color: var(--black);
         font-size: 1.3em;
         font-weight: bold;
         text-decoration: none;
@@ -146,7 +146,7 @@ export default {
 
         cursor: pointer;
 
-        &:hover { background-color : rgb( var(--gray-200) ) }
+        &:hover { background-color : var(--gray-200) }
 
         .sidebar__tapIcon {
 

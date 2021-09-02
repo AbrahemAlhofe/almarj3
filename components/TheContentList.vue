@@ -24,7 +24,7 @@ export default {
       padding-block: 1em;
       padding-inline: 2em;
       display: block;
-      color: rgb( var(--black) );
+      color: var(--black);
       text-decoration: none;
 
   }

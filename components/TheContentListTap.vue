@@ -63,13 +63,13 @@ export default {
         padding: 0.6em;
         padding-inline-start: 0.3em;
 
-        color: rgb( var(--gray-400) );
+        color: var(--gray-400);
         font-size: 1.3em;
         font-weight: bold;
 
         &:hover {
 
-            background-color: rgb( var(--gray-100) );
+            background-color: var(--gray-100);
 
         }
 
@@ -94,7 +94,7 @@ export default {
         padding-block: 1em;
         padding-inline: 2em;
         display: block;
-        color: rgb( var(--black) );
+        color: var(--black);
         text-decoration: none;
 
     }

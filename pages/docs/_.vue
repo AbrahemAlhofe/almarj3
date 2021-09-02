@@ -70,6 +70,7 @@ export default {
 
   min-height : 100vh;
   display: flex;
+  background-color: var( --white );
 
   &__body {
     flex-grow: 1;

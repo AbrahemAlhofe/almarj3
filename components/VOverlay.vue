@@ -60,5 +60,26 @@ export default {
   &--transitionEnter,
   &--transitionLeaveTo { opacity : 0 }
 
+  &::before {
+    content: "";
+    background-color: var(--gray-500);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.7;
+  }
+
 }
+
+.defaultLayout.--dark-mode {
+
+  .v-overlay::before {
+
+    background-color: var(--gray-100);
+
+  }
+
+}
+
 </style>

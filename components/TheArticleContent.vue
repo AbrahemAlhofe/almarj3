@@ -35,9 +35,10 @@ export default {
 }
 </script>
 <style lang="scss">
-.article {
+.content {
 
   padding: 1em;
+  color: var(--black);
 
   p { text-align: justify }
 

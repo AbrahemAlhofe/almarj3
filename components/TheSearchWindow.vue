@@ -69,7 +69,7 @@ export default {
   overflow: hidden;
   margin: 1em;
 
-  background-color: rgb( var(--white) );
+  background-color: var(--white);
 
   &__closeButton {
 
@@ -84,12 +84,12 @@ export default {
 
       cursor: pointer;
 
-      &:hover { background-color: rgb( var(--gray-200) ) }
+      &:hover { background-color: var(--gray-100) }
 
       svg {
 
         width: 1.7em;
-        fill: rgb( var(--gray-400) );
+        fill: var(--gray-400);
 
       }
 
@@ -118,7 +118,7 @@ export default {
   margin-top: 1em;
   border-radius: .5em;
 
-  background-color: rgb( var(--gray-200) );
+  background-color: var( --gray-100 );
 
   &__input {
 
@@ -133,6 +133,7 @@ export default {
     background-color: transparent;
 
     font-size: 1.1em;
+    color: var(--black);
     font-family: 'Cairo';
 
   }
@@ -162,7 +163,7 @@ export default {
 
   &__searchButton {
 
-    fill : rgb( var(--gray-400) );
+    fill : var(--gray-400);
     svg { width: 3em }
 
   }
@@ -178,7 +179,7 @@ export default {
 
     display: block;
 
-    border: 1px solid rgb(var(--gray-300));
+    border: 1px solid var(--gray-300);
     border-radius: 5px;
     margin-top: 1em;
     padding: 0.5em;
@@ -193,13 +194,13 @@ export default {
 
       font-size: 1.2em;
       font-weight: 600;
-      color: rgb( var(--blue-100) );
+      color: var( --blue-100 );
 
     }
 
     &__brief {
 
-      color: rgb( var(--gray-500) );
+      color: var(--gray-500);
       font-size: 0.9em;
       padding: 0.2em;
 
@@ -207,7 +208,7 @@ export default {
 
     &:hover {
 
-      background-color: rgb( var(--gray-100) );
+      background-color: var(--gray-100);
 
     }
 

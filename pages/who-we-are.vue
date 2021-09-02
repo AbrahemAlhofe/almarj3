@@ -28,13 +28,14 @@ export default {
 .whoWeAre {
 
     text-align: center;
+    color: var(--black);
 
     .whoWeAre__body {
 
-        text-align: justify;
-        width: 45%;
-        margin: auto;
-        line-height: 2em;
+      text-align: justify;
+      width: 45%;
+      margin: auto;
+      line-height: 2em;
 
     }
 
