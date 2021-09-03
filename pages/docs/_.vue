@@ -1,10 +1,11 @@
 <template lang="pug">
   .referencePage
       TheContentList.page__aside( :content-list='links' )
-      .referencePage__body
-        article.referencePage__article: TheArticleContent( :document='article.content.body' )
+      article.referencePage__body( v-markdown='article.content.body')
 </template>
 <script>
+import markdown from '@/directives/markdown.directive';
+
 export default {
   async asyncData ({ store, route }) {
     const links = await store.dispatch('links/fetchAll')
@@ -62,7 +63,8 @@ export default {
       ]
 
     }
-  }
+  },
+  directives: { markdown }
 }
 </script>
 <style lang='scss'>
@@ -73,13 +75,14 @@ export default {
   background-color: var( --white );
 
   &__body {
+  
     flex-grow: 1;
     width: 100%;
-  }
-
-  &__content {
-
-    flex-grow: 1
+    padding: 1em;
+    color: var(--black);
+    
+    p { text-align: justify }
+    img { width: 100% }
 
   }
 
