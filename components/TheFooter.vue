@@ -1,10 +1,10 @@
 <template lang="pug">
     .footer
         button.button( @click="$store.commit('togglePrefersColorMode')" )
-            template( v-if='$store.state.PrefersColorMode === "dark"' )
+            template( v-if='$store.getters.prefersColorMode === "dark"' )
                 span.button__icon: SunIcon
                 span.button__text الوضع النهاري
-            template( v-if='$store.state.PrefersColorMode === "light"' )
+            template( v-if='$store.getters.prefersColorMode === "light"' )
                 span.button__icon: MoonIcon
                 span.button__text الوضع الليلي
         .contactUs
