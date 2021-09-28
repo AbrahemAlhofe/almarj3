@@ -1,6 +1,6 @@
 <template lang="pug">
     .footer
-        button.button( @click="$store.commit('togglePrefersColorMode')" )
+        button.button( @click="$store.commit('togglePrefersColorMode')" :class='`--${$store.getters.prefersColorMode}-mode`' )
             template( v-if='$store.getters.prefersColorMode === "dark"' )
                 span.button__icon: SunIcon
                 span.button__text الوضع النهاري
@@ -69,6 +69,7 @@ export default {
         background-color: var(--white);
         border: none;
         border-radius: 0.5em;
+        padding: 0.5em;
 
         &__text {
 
@@ -90,10 +91,13 @@ export default {
                 width: 2em;
 
             }
-
         }
 
         @media (min-width: 768px) { order: 1 }
+
+        &.--dark-mode {
+
+        }
 
     }
 

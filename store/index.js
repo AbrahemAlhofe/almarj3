@@ -1,16 +1,8 @@
 export const state = () => ({
+  prefersColorMode: 'light',
   isSidebarOpen: false,
   isSearchWindowOpen: false
 })
-
-export const getters = {
-
-  prefersColorMode () {
-    const isBrowser = typeof window !== 'undefined'
-    return isBrowser ? localStorage.getItem('prefers-color-mode') : 'light'
-  }
-
-}
 
 export const mutations = {
 
@@ -35,3 +27,17 @@ export const mutations = {
   }
 
 }
+
+export const plugins = [
+
+  (store) => {
+    if (typeof window === 'undefined') { return }
+
+    const customUserPrefersColorMode = localStorage.getItem('prefers-color-mode')
+    if (customUserPrefersColorMode) { store.state.prefersColorMode = customUserPrefersColorMode }
+
+    const deviceUserPrefersColorMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (deviceUserPrefersColorMode) { store.state.prefersColorMode = 'dark' }
+  }
+
+]
