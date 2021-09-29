@@ -1,10 +1,10 @@
 <template lang='pug'>
-  .defaultLayout( :class="{ '--dark-mode' : $store.state.prefersColorMode === 'dark' }" )
+  .layout#default( :class="{ '--dark-mode' : $store.state.prefersColorMode === 'dark' }" )
     ClientOnly: TheSidebar
     ClientOnly: TheSearchWindow
-    TheMenu.defaultLayout__menu
-    Nuxt.defaultLayout__content
-    TheFooter.defaultLayout__footer
+    TheMenu
+    Nuxt
+    TheFooter
 </template>
 <script>
 export default {
@@ -24,15 +24,11 @@ export default {
 
 body { margin: 0px }
 
-.defaultLayout {
+.layout#default {
     
   font-family: cairo;
   font-size: clamp( 16px, 1em, 1.6vw );
   word-spacing: 1px;
-  
-  display: grid;
-  grid-template-rows: 10vh minmax(90vh, auto) 1fr;
-
   background-color: var(--white);
 
   &.--dark-mode {
@@ -44,24 +40,6 @@ body { margin: 0px }
     --gray-300: hsl(0, 0%, 45%);
     --gray-400: hsl( 0, 0%, 35%);
     --gray-500: hsl(0, 0%, 75%);
-
-  }
-
-  &__menu {
-
-    grid-row: 1;
-
-  }
-
-  &__content {
-
-    grid-row: 2;
-
-  }
-
-  &__footer {
-
-    grid-row: 3;
 
   }
 

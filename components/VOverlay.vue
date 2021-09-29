@@ -72,7 +72,7 @@ export default {
 
 }
 
-.defaultLayout.--dark-mode {
+.layout#default.--dark-mode {
 
   .v-overlay::before {
 

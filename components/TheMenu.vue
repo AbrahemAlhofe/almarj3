@@ -1,4 +1,3 @@
-
 <template lang="pug">
     .menu
         v-logo.menu__logo( :is-full='true' )
@@ -36,7 +35,8 @@ export default {
 <style lang='scss'>
 .menu {
 
-  position: fixed;
+  position: sticky;
+  top: 0;
 
   height : 10vh;
   width : 100%;
