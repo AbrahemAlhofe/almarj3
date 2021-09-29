@@ -1,12 +1,6 @@
 <template lang="pug">
     .footer
-        button.button( @click="$store.commit('togglePrefersColorMode')" :class='`--${$store.getters.prefersColorMode}-mode`' )
-            template( v-if='$store.getters.prefersColorMode === "dark"' )
-                span.button__icon: SunIcon
-                span.button__text الوضع النهاري
-            template( v-if='$store.getters.prefersColorMode === "light"' )
-                span.button__icon: MoonIcon
-                span.button__text الوضع الليلي
+        TheFooterPrefersColorModeButton
         .contactUs
             a.contactUs__facebook( :href='contacts.facebook' ): FacebookIcon
             a.contactUs__whatsapp( :href='contacts.whatsapp' ): WhatsappIcon
@@ -17,11 +11,9 @@
 import FacebookIcon from '@/assets/icons/facebook.svg?inline'
 import WhatsappIcon from '@/assets/icons/whatsapp.svg?inline'
 import EmailIcon from '@/assets/icons/email.svg?inline'
-import SunIcon from '@/assets/icons/sun.svg?inline'
-import MoonIcon from '@/assets/icons/moon.svg?inline'
 
 export default {
-  components: { FacebookIcon, WhatsappIcon, EmailIcon, SunIcon, MoonIcon },
+  components: { FacebookIcon, WhatsappIcon, EmailIcon },
   data () {
     return {
       contacts: {
@@ -49,55 +41,14 @@ export default {
 
     background-color: var(--black);
 
+    perspective: 1000px;
+
     @media (min-width: 768px) { flex-direction: row }
 
     &__copyRight {
 
         color: var(--white);
         font-size: 0.8em;
-
-    }
-
-    .button {
-
-        width: 10em;
-        height: 3em;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        cursor: pointer;
-        background-color: var(--white);
-        border: none;
-        border-radius: 0.5em;
-        padding: 0.5em;
-
-        &__text {
-
-            color: var(--black);
-            font-weight: bold;
-            font-family: 'Cairo';
-
-        }
-
-        &__icon {
-
-            height: fit-content;
-            display: flex;
-
-            svg {
-
-                fill: var(--black);
-                height: 100%;
-                width: 2em;
-
-            }
-        }
-
-        @media (min-width: 768px) { order: 1 }
-
-        &.--dark-mode {
-
-        }
 
     }
 
