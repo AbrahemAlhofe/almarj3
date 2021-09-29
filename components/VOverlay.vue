@@ -62,7 +62,7 @@ export default {
 
   &::before {
     content: "";
-    background-color: var(--gray-500);
+    background-color: var(--gray-30);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -76,7 +76,7 @@ export default {
 
   .v-overlay::before {
 
-    background-color: var(--gray-100);
+    background-color: var(--gray-95);
 
   }
 

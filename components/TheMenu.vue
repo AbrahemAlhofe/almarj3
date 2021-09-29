@@ -83,7 +83,7 @@ export default {
     justify-content: center;
     align-items: center;
 
-    background-color: var(--gray-100);
+    background-color: var(--gray-95);
 
     border-radius: 0.4em;
     margin-inline-start : 1em;
@@ -92,7 +92,7 @@ export default {
 
     cursor: pointer;
 
-    &:hover { background-color: var(--gray-300) }
+    &:hover { background-color: var(--gray-45) }
 
     svg {
 
@@ -119,7 +119,7 @@ export default {
 
     cursor: pointer;
 
-    &:hover { background-color: var(--gray-100) }
+    &:hover { background-color: var(--gray-95) }
 
     svg {
 
@@ -155,7 +155,7 @@ export default {
 
   &.--exact-active {
 
-    background-color: var( --blue-100 );
+    background-color: var( --blue-45 );
     color: var(--white) !important;
 
     .tap__name { color: var(--white) !important }
@@ -170,9 +170,9 @@ export default {
 
   &:hover {
 
-    .tap__name { color: var( --blue-100 ) }
+    .tap__name { color: var( --blue-45 ) }
 
-    .tap__icon { fill: var( --blue-100 ) }
+    .tap__icon { fill: var( --blue-45 ) }
 
   }
 

@@ -75,7 +75,7 @@ export default {
     height: 100%;
     padding: 0.3em;
 
-    background-color: var(--gray-100);
+    background-color: var(--gray-95);
 
     overflow: scroll;
 
@@ -108,7 +108,7 @@ export default {
         svg {
 
             width: 1.7em;
-            fill: var(--gray-400);
+            fill: var(--gray-65);
 
         }
 

@@ -63,14 +63,14 @@ export default {
 
         border-radius: 50%;
 
-        background-color: rgb( var(--gray-300) );
+        background-color: rgb( var(--gray-45) );
         cursor: pointer;
 
         transition: all 0.5s ease-in-out;
 
         &.--active {
 
-            background-color: var( --blue-100 );
+            background-color: var( --blue-45 );
 
         }
 

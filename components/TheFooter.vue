@@ -69,7 +69,7 @@ export default {
             justify-content: center;
             align-items: center;
 
-            background: var(--gray-500);
+            background: var(--gray-30);
             cursor: pointer;
 
             svg {

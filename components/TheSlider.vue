@@ -124,7 +124,7 @@ export default {
 
             padding: 0.4em;
 
-            border-right: 5px solid var( --blue-100 );
+            border-right: 5px solid var( --blue-45 );
 
           }
 

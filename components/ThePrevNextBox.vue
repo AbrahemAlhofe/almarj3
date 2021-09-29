@@ -33,7 +33,7 @@ export default {
     a {
         font-weight: bold;
         text-decoration: none;
-        color: var(--blue-100);
+        color: var(--blue-45);
         padding: 0.5em;
         border-radius: 5px;
         display: flex;

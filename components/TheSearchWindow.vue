@@ -84,12 +84,12 @@ export default {
 
       cursor: pointer;
 
-      &:hover { background-color: var(--gray-100) }
+      &:hover { background-color: var(--gray-95) }
 
       svg {
 
         width: 1.7em;
-        fill: var(--gray-400);
+        fill: var(--gray-65);
 
       }
 
@@ -118,7 +118,7 @@ export default {
   margin-top: 1em;
   border-radius: .5em;
 
-  background-color: var( --gray-100 );
+  background-color: var( --gray-95 );
 
   &__input {
 
@@ -163,7 +163,7 @@ export default {
 
   &__searchButton {
 
-    fill : var(--gray-400);
+    fill : var(--gray-65);
     svg { width: 3em }
 
   }
@@ -179,7 +179,7 @@ export default {
 
     display: block;
 
-    border: 1px solid var(--gray-300);
+    border: 1px solid var(--gray-45);
     border-radius: 5px;
     margin-top: 1em;
     padding: 0.5em;
@@ -194,13 +194,13 @@ export default {
 
       font-size: 1.2em;
       font-weight: 600;
-      color: var( --blue-100 );
+      color: var( --blue-45 );
 
     }
 
     &__brief {
 
-      color: var(--gray-500);
+      color: var(--gray-30);
       font-size: 0.9em;
       padding: 0.2em;
 
@@ -208,7 +208,7 @@ export default {
 
     &:hover {
 
-      background-color: var(--gray-100);
+      background-color: var(--gray-95);
 
     }
 
