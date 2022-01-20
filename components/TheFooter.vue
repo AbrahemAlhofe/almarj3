@@ -41,7 +41,7 @@ export default {
 
     background-color: var(--black);
 
-    perspective: 1000px;
+    perspective: 1000vw;
 
     @media (min-width: 768px) { flex-direction: row }
 
