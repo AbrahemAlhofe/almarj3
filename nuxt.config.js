@@ -62,7 +62,7 @@ module.exports = {
       hostname: process.env.BASE_URL,
       i18n: true,
       async routes () {
-        const articles = await await storyblok.get(`cdn/stories`)
+        const { data: { stories : articles } } = await storyblok.get(`cdn/stories`);
         return articles.map( article => ({
           url: `/docs/${article.full_slug}`,
           changefreq: 'daily',
