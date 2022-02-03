@@ -3,6 +3,9 @@ const StoryblokClient = require('storyblok-js-client');
 const storyblok = new StoryblokClient({ accessToken: process.env.STORYBLOK_AUTH_TOKEN })
 
 module.exports = {
+
+  target: "static",
+
   telemetry: false,
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
