@@ -1,18 +1,24 @@
 <template lang="pug">
-  .referencePage
+  .page#reference
       TheContentList.page__aside( :content-list='links' )
-      article.referencePage__body( v-markdown='article.content.body')
+      .page__main
+        article.page__content( v-markdown='article.content.body')
+        ThePrevNextBox( :nextLink='currentLink.next' :prevLink='currentLink.previous' )
 </template>
 <script>
 import markdown from '@/directives/markdown.directive';
 
 export default {
   async asyncData ({ store, route }) {
+
     const links = await store.dispatch('links/fetchAll')
 
     const article = await store.dispatch('content/getOne', { path: `/${route.params.pathMatch}` })
 
-    return { links, article }
+    const currentLink = await store.dispatch('links/fetchOne', article.id);
+
+    return { links, article, currentLink }
+
   },
   head () {
     return {
@@ -68,13 +74,20 @@ export default {
 }
 </script>
 <style lang='scss'>
-.referencePage {
+.page#reference {
 
   min-height : 100vh;
   display: flex;
   background-color: var( --white );
 
-  &__body {
+  .page__main {
+
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .page__content {
   
     flex-grow: 1;
     width: 100%;
@@ -95,6 +108,7 @@ export default {
     @media (min-width: 768px) { display: block }
 
   }
+
 
 }
 </style>
