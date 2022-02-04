@@ -15,6 +15,12 @@ export default {
       titleTemplate: `%s | مرجع برلمان طلائع القاهرة`
 
     }
+  },
+
+  middleware ({ store }) {
+
+    store.commit("closeSidebar");
+
   }
 
 }
