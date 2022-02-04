@@ -90,7 +90,6 @@ export default {
   .page__content {
   
     flex-grow: 1;
-    width: 100%;
     padding: 1em;
     color: var(--black);
     
