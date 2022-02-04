@@ -10,7 +10,8 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "cy:run": "cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "heroku-postbuild": "npm run generate"
   },
   "dependencies": {
     "@babel/core": "7.13.15",
