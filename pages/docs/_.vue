@@ -6,19 +6,18 @@
         ThePrevNextBox( :nextLink='currentLink.next' :prevLink='currentLink.previous' )
 </template>
 <script>
-import markdown from '@/directives/markdown.directive';
+import markdown from '@/directives/markdown.directive'
 
 export default {
+  directives: { markdown },
   async asyncData ({ store, route }) {
-
     const links = await store.dispatch('links/fetchAll')
 
     const article = await store.dispatch('content/getOne', { path: `/${route.params.pathMatch}` })
 
-    const currentLink = await store.dispatch('links/fetchOne', article.id);
+    const currentLink = await store.dispatch('links/fetchOne', article.id)
 
     return { links, article, currentLink }
-
   },
   head () {
     return {
@@ -69,8 +68,7 @@ export default {
       ]
 
     }
-  },
-  directives: { markdown }
+  }
 }
 </script>
 <style lang='scss'>
@@ -88,11 +86,11 @@ export default {
   }
 
   .page__content {
-  
+
     flex-grow: 1;
     padding: 1em;
     color: var(--black);
-    
+
     p { text-align: justify }
     img { width: 100% }
 
@@ -107,7 +105,6 @@ export default {
     @media (min-width: 768px) { display: block }
 
   }
-
 
 }
 </style>

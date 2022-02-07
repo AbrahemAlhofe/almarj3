@@ -12,15 +12,13 @@ export default {
   head () {
     return {
 
-      titleTemplate: `%s | مرجع برلمان طلائع القاهرة`
+      titleTemplate: '%s | مرجع برلمان طلائع القاهرة'
 
     }
   },
 
   middleware ({ store }) {
-
-    store.commit("closeSidebar");
-
+    store.commit('closeSidebar')
   }
 
 }
@@ -31,7 +29,7 @@ export default {
 body { margin: 0px }
 
 .layout#default {
-    
+
   font-family: cairo;
   font-size: clamp( 16px, 1em, 1.6vw );
   word-spacing: 1px;

@@ -1,6 +1,6 @@
 export const state = () => ({
 
-  contentVersion: Math.floor( Math.random() * 1000 ),
+  contentVersion: Math.floor(Math.random() * 1000),
 
   cashedArticles: []
 
@@ -16,7 +16,7 @@ export const mutations = {
     })
 
     return articles
-  },
+  }
 
 }
 
@@ -28,7 +28,7 @@ export const actions = {
       contentVersion: context.contentVersion
     }).then((response) => {
       return response.data.story
-    }).catch(err => console.log({ err }))
+    }).catch((error) => { throw error })
   },
 
   async getOne (context, { path }) {
@@ -48,9 +48,7 @@ export const actions = {
   },
 
   search (context, query) {
-
     return this.$algolia.search(query).then(res => res.hits)
-
   }
 
 }

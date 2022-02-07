@@ -7,13 +7,11 @@
 </template>
 <script>
 export default {
-  
-  async asyncData ({ store, app, redirect, route }) {
 
-    redirect(`/docs/intro`)
+  asyncData ({ store, app, redirect, route }) {
+    redirect('/docs/intro')
 
     return {}
-  
   }
 
 }

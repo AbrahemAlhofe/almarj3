@@ -6,11 +6,9 @@
 export default {
 
   asyncData ({ redirect }) {
-
-    redirect(`/docs`)
+    redirect('/docs')
 
     return {}
-
   },
 
   head () {
