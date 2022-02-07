@@ -4,6 +4,14 @@ export const state = () => ({
   cashedLinks: []
 })
 
+export const mutations = {
+
+  cashLinks (state, links) {
+    state.cashedLinks = links
+  }
+
+}
+
 export const actions = {
 
   fetchOne (store, articleId) {
@@ -107,7 +115,7 @@ export const actions = {
     theLastArticle.next = theFirstChapter.articles[0]
     theFirstChapter.articles[0].previous = theLastArticle
 
-    store.state.cashedLinks = [...articles, ...chapters]
+    store.commit('cashLinks', [...articles, ...chapters])
 
     return store.state.cashedLinks
   }
