@@ -105,6 +105,12 @@ module.exports = {
 
     { path: '/hooks/article-published', handler: '~/hooks/article-published.hook' }
 
-  ]
+  ],
+
+  generate: {
+    
+    fallback: true
+  
+  }
 
 }
