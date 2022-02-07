@@ -24,7 +24,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.14.6",
+    "nuxt": "^2.15.8",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
