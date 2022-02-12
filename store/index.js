@@ -27,21 +27,8 @@ export const mutations = {
   },
 
   setPrefersColorMode: (state, prefersColorMode) => {
+    console.log({ prefersColorMode })
     state.prefersColorMode = prefersColorMode
   }
 
 }
-
-export const plugins = [
-
-  (store) => {
-    if (typeof window === 'undefined') { return }
-
-    const customUserPrefersColorMode = localStorage.getItem('prefers-color-mode')
-    if (customUserPrefersColorMode) { store.commit('setPrefersColorMode', customUserPrefersColorMode) }
-
-    const deviceUserPrefersColorMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-    if (deviceUserPrefersColorMode) { store.commit('setPrefersColorMode', 'dark') }
-  }
-
-]

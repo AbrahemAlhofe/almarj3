@@ -1,5 +1,5 @@
 <template lang='pug'>
-button.button( @click="togglePrefersColorMode" :class='{ "--rotate" : isRotated }' )
+button.button( @click="togglePrefersColorMode" :class='{ "--rotate" : $store.state.prefersColorMode === "dark" }' )
     .button__side#front
         span.button__icon: SunIcon
         span.button__text الوضع النهاري
@@ -15,16 +15,9 @@ export default {
 
   components: { SunIcon, MoonIcon },
 
-  data: vm => ({
-
-    isRotated: false
-
-  }),
-
   methods: {
 
     togglePrefersColorMode () {
-      this.isRotated = !this.isRotated
       setTimeout(() => this.$store.commit('togglePrefersColorMode'), 500)
     }
 
