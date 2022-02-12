@@ -1,5 +1,5 @@
 <template lang='pug'>
-button.button( @click="togglePrefersColorMode" :class='{ "--rotate" : $store.state.prefersColorMode === "dark" }' )
+button.button( @click="togglePrefersColorMode" :class='{ "--rotate" : $store.state.prefersColorMode === "light" }' )
     .button__side#front
         span.button__icon: SunIcon
         span.button__text الوضع النهاري
