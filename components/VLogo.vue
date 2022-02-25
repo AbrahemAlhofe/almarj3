@@ -1,7 +1,9 @@
 <template lang='pug'>
   .logo( :class='{ "--full" : isFull }' )
     Logo.logo__icon
-    .logo__name( v-if='isFull' ) برلمان طلائع القاهرة
+    template( v-if='isFull' )
+      .logo__name برلمان طلائع القاهرة
+      .logo__badge( v-if='badge' ) {{ badge }}
 </template>
 <script>
 import Logo from '@/assets/images/logo.svg?inline'
@@ -11,6 +13,10 @@ export default {
     isFull: {
       type: Boolean,
       default: false
+    },
+    badge: {
+      type: String,
+      default: ''
     }
   }
 }
@@ -41,11 +47,30 @@ export default {
 
   }
 
+  &__badge {
+
+    background-color: var(--blue-20);
+    border-radius: 0.5em;
+    padding: 0.5em;
+    font-size: 0.6em;
+    color: var(--white);
+    margin-inline: 0.5em;
+
+  }
+
   &.--full {
 
-    width : 13em;
-
     svg { margin-inline-end: 1em }
+
+  }
+
+}
+
+.layout.--dark-mode {
+
+  .logo__badge {
+
+    color: var(--black);
 
   }
 

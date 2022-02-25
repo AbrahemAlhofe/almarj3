@@ -1,6 +1,6 @@
 <template lang="pug">
     .menu
-        v-logo.menu__logo( :is-full='true' )
+        v-logo.menu__logo( :is-full='true' badge="النسخة التجريبية" )
         ul.menu__list
           nuxt-link.tap( data-pagename='docs' to="/docs/intro" exactActiveClass='--exact-active' )
               .tap__icon: BookIcon
