@@ -37,10 +37,12 @@ export default {
 
         // Open Graph
         {
+          hid: 'og:site_name',
           property: 'og:site_name',
           content: 'مرجع برلمان طلائع القاهرة'
         },
         {
+          hid: 'og:image',
           property: 'og:image',
           content: process.env.BASE_URL + '/screenshot.png'
         },
@@ -49,18 +51,22 @@ export default {
           content: 'image/png'
         },
         {
+          hid: 'og:title',
           property: 'og:title',
           content: `${this.article.name} | مرجع برلمان طلائع القاهرة`
         },
         {
+          hid: 'og:description',
           property: 'og:description',
           content: this.article.content.description
         },
         {
+          hid: 'og:locale',
           property: 'og:locale',
           content: this.article.lang === 'default' ? 'ar' : this.article.lang
         },
         {
+          hid: 'og:type',
           property: 'og:type',
           content: 'article'
         },
