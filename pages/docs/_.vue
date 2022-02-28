@@ -37,6 +37,18 @@ export default {
 
         // Open Graph
         {
+          property: 'og:site_name',
+          content: 'مرجع برلمان طلائع القاهرة'
+        },
+        {
+          property: 'og:image',
+          content: process.env.BASE_URL + '/screenshot.png'
+        },
+        {
+          property: 'og:image:type',
+          content: 'image/png'
+        },
+        {
           property: 'og:title',
           content: `${this.article.name} | مرجع برلمان طلائع القاهرة`
         },
