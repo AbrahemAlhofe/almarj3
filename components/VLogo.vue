@@ -1,7 +1,7 @@
 <template lang='pug'>
   .logo( :class='{ "--full" : isFull }' )
     Logo.logo__icon
-    template( v-if='isFull' )
+    span.logo__span( v-if='isFull' )
       .logo__name برلمان طلائع القاهرة
       .logo__badge( v-if='badge' ) {{ badge }}
 </template>
@@ -43,7 +43,8 @@ export default {
   &__name {
 
     font-weight: bold;
-    color: var( --black );
+    color: var(--black);
+    font-size: 0.85em;
 
   }
 
@@ -54,7 +55,7 @@ export default {
     padding: 0.5em;
     font-size: 0.6em;
     color: var(--white);
-    margin-inline: 0.5em;
+    width: fit-content;
 
   }
 
