@@ -101,6 +101,8 @@ export default {
     padding: 0.5em;
 
     box-sizing: border-box;
+
+    color: var(--black);
     text-align: center;
     font-size: 1.2em;
 
