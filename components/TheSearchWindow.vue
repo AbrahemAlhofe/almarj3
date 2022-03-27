@@ -175,6 +175,7 @@ export default {
 .searchWindow .searchWindow__hitsList {
 
   overflow-y: scroll;
+  overscroll-behavior: contain;
   max-height: 50vh;
 
   .hit {
