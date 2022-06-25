@@ -2,7 +2,7 @@
   .contentList
     template( v-for='link of contentList' )
       TheContentListTap( v-if="link.type == 'Chapter'" :title='link.name' :links='link.articles' )
-      NuxtLink.contentList__link( v-else :to='`/docs/${link.slug}`' ) {{ link.name }}
+      NuxtLink.contentList__link( v-else :to='`/docs/${link.id}/${link.slug}`' ) {{ link.name }}
 </template>
 <script>
 export default {

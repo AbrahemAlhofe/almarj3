@@ -5,7 +5,7 @@
         .contentListTap__title {{ title }}
 
       .contentListTap__list
-        NuxtLink.contentListTap__link( v-for='link of links' :key='link.slug' :to='`/docs/${link.slug}`' ) {{ link.name }}
+        NuxtLink.contentListTap__link( v-for='link of links' :key='link.slug' :to='`/docs/${link.id}/${link.slug}`' ) {{ link.name }}
 </template>
 <script>
 import ChevronUpIcon from '@/assets/icons/chevron-up.svg?inline'

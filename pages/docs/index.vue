@@ -9,7 +9,7 @@
 export default {
 
   asyncData ({ store, app, redirect, route }) {
-    redirect('/docs/intro')
+    redirect('/docs/43894185/intro')
 
     return {}
   }

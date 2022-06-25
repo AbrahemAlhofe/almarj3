@@ -10,7 +10,7 @@
             .searchWindow__hitsList
               .searchWindow__loader( v-if='isLoading' ) جاري البحث
               template( v-else )
-                NuxtLink.hit( v-for='hit of hits' :key='hit.id' :to='`/docs/${hit.full_slug}`' @click.native="close" )
+                NuxtLink.hit( v-for='hit of hits' :key='hit.id' :to='`/docs/${hit.id}/${hit.slug}`' @click.native="close" )
                   .hit__path {{ hit.name }}
                   .hit__brief {{ hit.content.description }}
 </template>

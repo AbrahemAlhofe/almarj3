@@ -68,7 +68,7 @@ module.exports = {
       async routes () {
         const { data: { stories : articles } } = await storyblok.get(`cdn/stories`);
         return articles.map( article => ({
-          url: `/docs/${article.full_slug}`,
+          url: `/docs/${article.id}/${article.slug}`,
           changefreq: 'daily',
           priority: 0.7,
           lastmod: article.published_at

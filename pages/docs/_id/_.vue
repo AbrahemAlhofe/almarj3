@@ -11,11 +11,15 @@ import markdown from '@/directives/markdown.directive'
 export default {
   directives: { markdown },
   async asyncData ({ store, route }) {
+    console.log(route.params.id)
+
     const links = await store.dispatch('links/fetchAll')
 
-    const article = await store.dispatch('content/getOne', { path: `/${route.params.pathMatch}` })
+    const article = await store.dispatch('content/getArticleById', route.params.id)
 
     const currentLink = await store.dispatch('links/fetchOne', article.id)
+
+    console.log({ prev: currentLink.previous, next: currentLink.next })
 
     return { links, article, currentLink }
   },

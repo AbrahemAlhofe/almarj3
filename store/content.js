@@ -22,8 +22,12 @@ export const mutations = {
 
 export const actions = {
 
-  fetchOne (context, { path, ...options }) {
-    return this.$storyapi.get(`cdn/stories${path}`, {
+  fetchOne (context, { path, id, ...options }) {
+    let query = `cdn/stories${path}`
+
+    if (id !== undefined) { query = `cdn/stories/${id}` }
+
+    return this.$storyapi.get(query, {
       ...options,
       contentVersion: context.contentVersion
     }).then((response) => {
@@ -31,20 +35,9 @@ export const actions = {
     }).catch((error) => { throw error })
   },
 
-  async getOne (context, { path }) {
-    const cashedArticles = context.state.cashedArticles
-    const articleFullSlug = path.slice(1)
-    const cashedArticleIndex = cashedArticles.findIndex(article => article.full_slug === articleFullSlug)
-    const isArticleCashedBefore = cashedArticleIndex !== -1
-
-    if (isArticleCashedBefore) {
-      const article = cashedArticles[cashedArticleIndex]
-      return article
-    } else {
-      const article = await context.dispatch('fetchOne', { path })
-      context.commit('cashArticles', [article])
-      return article
-    }
+  async getArticleById (context, id) {
+    const article = await context.dispatch('fetchOne', { id })
+    return article
   },
 
   search (context, query) {

@@ -1,13 +1,13 @@
 <template lang="pug">
     #nextPrevBox
         template( v-if='isNextLinkExists' )
-          NuxtLink( :to='`/docs/${nextLink.slug}`' ).link#next
+          NuxtLink( :to='`/docs/${nextLink.id}/${nextLink.slug}`' ).link#next
               RightChevronIcon
               .link__body
                 div {{ nextLink.name }}
                 span التالي
         template( v-if='isPrevLinkExists' )
-          NuxtLink( v-if='prevLink' :to='`/docs/${prevLink.slug}`' ).link#previous
+          NuxtLink( v-if='prevLink' :to='`/docs/${prevLink.id}/${prevLink.slug}`' ).link#previous
               .link__body
                 div {{ prevLink.name }}
                 span السابق
