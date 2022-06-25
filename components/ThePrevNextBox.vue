@@ -1,12 +1,12 @@
 <template lang="pug">
     #nextPrevBox
-        template( v-if='nextLink' )
+        template( v-if='isNextLinkExists' )
           NuxtLink( :to='`/docs/${nextLink.slug}`' ).link#next
               RightChevronIcon
               .link__body
                 div {{ nextLink.name }}
                 span التالي
-        template( v-if='prevLink' )
+        template( v-if='isPrevLinkExists' )
           NuxtLink( v-if='prevLink' :to='`/docs/${prevLink.slug}`' ).link#previous
               .link__body
                 div {{ prevLink.name }}
@@ -19,7 +19,27 @@ import LeftChevronIcon from '@/assets/icons/chevron-left.svg?inline'
 
 export default {
   components: { RightChevronIcon, LeftChevronIcon },
-  props: ['nextLink', 'prevLink']
+  props: {
+    nextLink: {
+      type: Object,
+      default: () => ({})
+    },
+    prevLink: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  computed: {
+
+    isNextLinkExists () {
+      return Object.keys(this.nextLink).length !== 0
+    },
+
+    isPrevLinkExists () {
+      return Object.keys(this.prevLink).length !== 0
+    }
+
+  }
 }
 </script>
 <style lang='scss'>
