@@ -49,6 +49,7 @@ export default {
 
         color: var(--white);
         font-size: 0.8em;
+        text-align: center;
 
     }
 
