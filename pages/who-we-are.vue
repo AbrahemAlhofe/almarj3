@@ -33,9 +33,10 @@ export default {
     .whoWeAre__body {
 
       text-align: justify;
-      width: 45%;
+      max-width: max(25rem, 45vw);
       margin: auto;
       line-height: 2em;
+      padding: 1em;
 
     }
 
